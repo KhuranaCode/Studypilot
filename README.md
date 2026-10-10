@@ -12,6 +12,10 @@ StudyPilot helps students organize course subjects, track deadlines, run focused
 
 **[https://khuranacode.github.io/Studypilot/](https://khuranacode.github.io/Studypilot/)** - deployed on GitHub Pages. Without Firebase keys it runs in the built-in Setup Mode, so the full UI can be explored immediately with demo data.
 
+## Architecture
+
+![Studypilot system architecture](docs/3-studypilot-architecture.png)
+
 ## Screenshots
 
 | Landing Page | Sign In | Overview Dashboard |
