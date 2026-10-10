@@ -8,6 +8,18 @@ StudyPilot helps students organize course subjects, track deadlines, run focused
 
 ---
 
+## Live Demo
+
+**[https://khuranacode.github.io/Studypilot/](https://khuranacode.github.io/Studypilot/)** - deployed on GitHub Pages. Without Firebase keys it runs in the built-in Setup Mode, so the full UI can be explored immediately with demo data.
+
+## Screenshots
+
+| Landing Page | Sign In | Overview Dashboard |
+| :----------: | :-----: | :----------------: |
+| ![StudyPilot landing page](docs/screenshots/7-landing.png) | ![StudyPilot sign in page](docs/screenshots/8-login.png) | ![StudyPilot overview dashboard](docs/screenshots/9-dashboard.png) |
+
+---
+
 ## 1. System Architecture & Features
 
 ### Visual Design System & Color Palette
@@ -118,7 +130,7 @@ Open `http://localhost:5173` in your browser.
 ### Step 3: Enable Cloud Firestore
 1. Go to **Firestore Database** -> **Create Database**.
 2. Select your preferred region (e.g., `us-central1`).
-3. Deploy the strict security rules in [firestore.rules](file:///home/aaaditya/my_projects/StudyPilot/firestore.rules):
+3. Deploy the strict security rules in [firestore.rules](firestore.rules):
 
 ```bash
 # Install Firebase CLI if not already installed
@@ -214,4 +226,3 @@ npm run lint
 # Build production bundle to dist/
 npm run build
 ```
-
