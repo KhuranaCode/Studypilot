@@ -1,0 +1,149 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // -------------------------------------------------------------
+    // DEFAULT DENY: Any unmatched document access is blocked
+    // -------------------------------------------------------------
+    match /{document=**} {
+      allow read, write: false;
+    }
+
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null && request.auth.uid != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Trusted Administrator Authorization Check
+    function isAdmin() {
+      return isAuthenticated() && (request.auth.token.admin == true || request.auth.token.role == 'admin');
+    }
+
+    function isValidTimestamp(val) {
+      return val is timestamp || val is string;
+    }
+
+    // -------------------------------------------------------------
+    // USER PROFILE RULES: /users/{userId}
+    // -------------------------------------------------------------
+    match /users/{userId} {
+      // Owners can read their profile; Admins can read for user management
+      allow read: if isOwner(userId) || isAdmin();
+
+      // Create: User can initialize their own profile; cannot self-grant admin role
+      allow create: if isOwner(userId)
+        && request.resource.data.keys().hasAll(['email'])
+        && request.resource.data.email is string
+        && (!('role' in request.resource.data) || request.resource.data.role == 'student')
+        && (!('displayName' in request.resource.data) || request.resource.data.displayName is string)
+        && (!('studyGoal' in request.resource.data) || request.resource.data.studyGoal is string)
+        && (!('dailyStudyLimitMinutes' in request.resource.data) || request.resource.data.dailyStudyLimitMinutes is number)
+        && (!('preferredSessionMinutes' in request.resource.data) || request.resource.data.preferredSessionMinutes is number);
+
+      // Update: User can update preferences, cannot self-escalate role
+      allow update: if (isOwner(userId)
+        && (!('role' in request.resource.data) || request.resource.data.role == resource.data.role)
+        && (!('email' in request.resource.data) || request.resource.data.email == resource.data.email)
+        && (!('dailyStudyLimitMinutes' in request.resource.data) || request.resource.data.dailyStudyLimitMinutes is number)
+        && (!('preferredSessionMinutes' in request.resource.data) || request.resource.data.preferredSessionMinutes is number))
+        || isAdmin();
+
+      allow delete: if isAdmin(); // Only admins can remove profiles
+
+      // -----------------------------------------------------------
+      // SUBJECTS: /users/{userId}/subjects/{subjectId}
+      // -----------------------------------------------------------
+      match /subjects/{subjectId} {
+        allow read: if isOwner(userId);
+
+        allow create: if isOwner(userId)
+          && request.resource.data.keys().hasAll(['name', 'color'])
+          && request.resource.data.name is string
+          && request.resource.data.name.size() > 0
+          && request.resource.data.name.size() <= 120
+          && request.resource.data.color is string;
+
+        allow update: if isOwner(userId)
+          && request.resource.data.name is string
+          && request.resource.data.name.size() > 0
+          && request.resource.data.name.size() <= 120
+          && request.resource.data.color is string;
+
+        allow delete: if isOwner(userId);
+      }
+
+      // -----------------------------------------------------------
+      // TASKS: /users/{userId}/tasks/{taskId}
+      // STRICT OWNER ISOLATION: Student tasks are confidential
+      // -----------------------------------------------------------
+      match /tasks/{taskId} {
+        allow read: if isOwner(userId);
+
+        allow create: if isOwner(userId)
+          && request.resource.data.keys().hasAll(['title', 'subjectId', 'dueDate', 'priority'])
+          && request.resource.data.title is string
+          && request.resource.data.title.size() > 0
+          && request.resource.data.title.size() <= 200
+          && request.resource.data.subjectId is string
+          && request.resource.data.priority in ['low', 'medium', 'high']
+          && (!('completed' in request.resource.data) || request.resource.data.completed is bool)
+          && (!('estimatedMinutes' in request.resource.data) || request.resource.data.estimatedMinutes is number);
+
+        allow update: if isOwner(userId)
+          && request.resource.data.title is string
+          && request.resource.data.title.size() > 0
+          && request.resource.data.priority in ['low', 'medium', 'high']
+          && (!('completed' in request.resource.data) || request.resource.data.completed is bool);
+
+        allow delete: if isOwner(userId);
+      }
+
+      // -----------------------------------------------------------
+      // STUDY SESSIONS: /users/{userId}/studySessions/{sessionId}
+      // STRICT OWNER ISOLATION: Focus records and notes remain private
+      // -----------------------------------------------------------
+      match /studySessions/{sessionId} {
+        allow read: if isOwner(userId);
+
+        allow create: if isOwner(userId)
+          && request.resource.data.keys().hasAll(['title', 'subjectId', 'date', 'durationMinutes'])
+          && request.resource.data.title is string
+          && request.resource.data.subjectId is string
+          && request.resource.data.date is string
+          && request.resource.data.durationMinutes is number
+          && request.resource.data.durationMinutes >= 1
+          && request.resource.data.durationMinutes <= 720
+          && (!('completed' in request.resource.data) || request.resource.data.completed is bool);
+
+        allow update: if isOwner(userId)
+          && request.resource.data.title is string
+          && request.resource.data.durationMinutes is number;
+
+        allow delete: if isOwner(userId);
+      }
+
+      // -----------------------------------------------------------
+      // STUDY PLANS: /users/{userId}/studyPlans/{planId}
+      // STRICT OWNER ISOLATION: Personalized schedules remain private
+      // -----------------------------------------------------------
+      match /studyPlans/{planId} {
+        allow read: if isOwner(userId);
+
+        allow create: if isOwner(userId)
+          && request.resource.data.keys().hasAll(['title', 'weekStart', 'status'])
+          && request.resource.data.title is string
+          && request.resource.data.weekStart is string
+          && request.resource.data.status in ['draft', 'active', 'archived']
+          && (!('sessions' in request.resource.data) || request.resource.data.sessions is list);
+
+        allow update: if isOwner(userId)
+          && request.resource.data.status in ['draft', 'active', 'archived'];
+
+        allow delete: if isOwner(userId);
+      }
+    }
+  }
+}
