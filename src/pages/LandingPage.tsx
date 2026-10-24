@@ -487,7 +487,7 @@ export const LandingPage: React.FC = () => {
                       isDark ? 'text-[#858B95]' : 'text-slate-500'
                     }`}
                   >
-                    100% Private
+                    No Analytics Integration
                   </div>
                 </div>
                 <div>
@@ -585,7 +585,7 @@ export const LandingPage: React.FC = () => {
                       : 'bg-white/10 border border-white/20 text-white'
                   }`}
                 >
-                  <Cpu className="w-3.5 h-3.5" /> AI Engine v2.4
+                  <Cpu className="w-3.5 h-3.5" /> AI Engine
                 </span>
                 <Link to="/dashboard">
                   <ThreeDButton variant="metallic-chrome" size="sm">
