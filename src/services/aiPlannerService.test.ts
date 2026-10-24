@@ -19,7 +19,11 @@ const config: PlanGenerationConfig = {
 };
 
 const subjects: Subject[] = [
-  { id: 'sub1', name: 'Algorithms', code: 'CS 301', color: '#000000', examDate: '2026-11-01' } as Subject,
+  {
+    id: 'sub1', name: 'Algorithms', code: 'CS 301', color: '#000000',
+    bgLight: '#EEEEEE', textLight: '#111111', borderColor: '#333333',
+    totalHoursStudied: 0, targetHours: 10,
+  },
 ];
 const tasks: Task[] = [
   {
