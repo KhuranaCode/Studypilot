@@ -237,11 +237,11 @@ export const AdminPage: React.FC = () => {
                   size="sm"
                   className="bg-pilot-deep text-white border-transparent"
                 >
-                  Authorized Admin
+                  Demo Console
                 </Badge>
               </div>
               <p className="text-xs text-slate-500 mt-0.5">
-                Secure Operations, Infrastructure Health &amp; Privacy-Preserving User Management
+                Prototype command console - sample data only, no live backend connected
               </p>
             </div>
           </div>
@@ -306,7 +306,7 @@ export const AdminPage: React.FC = () => {
             </div>
             <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
               <CircleCheck className="w-3.5 h-3.5 text-emerald-600" />
-              Enforced
+              Simulated
             </span>
           </Tilt3DCard>
 
@@ -377,11 +377,10 @@ export const AdminPage: React.FC = () => {
         <div className="p-4 rounded-2xl bg-pilot-deep/5 border border-pilot-soft text-pilot-dark flex items-start gap-3 shadow-3d-secondary">
           <Lock className="w-4 h-4 text-pilot-deep shrink-0 mt-0.5" />
           <div className="text-xs space-y-0.5">
-            <p className="font-bold text-pilot-deep">Strict Student Privacy Architecture</p>
+            <p className="font-bold text-pilot-deep">Privacy-First Design</p>
             <p className="text-slate-600">
-              In compliance with StudyPilot Data Governance and Section 7 specifications, individual
-              students' private task notes, assignment text, and personal study records are never
-              exposed to administrators or third parties.
+              StudyPilot is designed so that individual students' private task notes, assignment
+              text, and personal study records are not exposed to administrators or third parties.
             </p>
           </div>
         </div>
@@ -493,7 +492,7 @@ export const AdminPage: React.FC = () => {
                 Security &amp; Operational Audit Log
               </h3>
             </div>
-            <span className="text-xs text-slate-400 font-mono">Read-only server stream</span>
+            <span className="text-xs text-slate-400 font-mono">Sample audit data</span>
           </div>
           <div className="divide-y divide-slate-100 border border-slate-200 rounded-xl overflow-hidden text-xs">
             {auditLogs.map((log) => (
