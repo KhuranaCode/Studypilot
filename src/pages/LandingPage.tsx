@@ -438,7 +438,7 @@ export const LandingPage: React.FC = () => {
               >
                 StudyPilot transforms your course syllabi, assignments, and exam deadlines into a
                 balanced, conflict-free weekly schedule. Track focus intervals with an integrated
-                timer and sync your progress securely.
+                timer and keep your progress in your browser.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
                 <ThreeDButton
@@ -470,14 +470,14 @@ export const LandingPage: React.FC = () => {
                       isDark ? 'text-[#F2F3F5]' : 'text-slate-900'
                     }`}
                   >
-                    100%
+                    Local
                   </div>
                   <div
                     className={`text-[11px] font-medium uppercase tracking-wider ${
                       isDark ? 'text-[#858B95]' : 'text-slate-500'
                     }`}
                   >
-                    Client &amp; Cloud Sync
+                    Browser Storage in Demo
                   </div>
                 </div>
                 <div>
