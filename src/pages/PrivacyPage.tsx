@@ -105,7 +105,7 @@ export const PrivacyPage: React.FC = () => {
               3. Processing of Schedule Information
             </h2>
             <p>
-              When you generate an automated study schedule, your course titles and upcoming deadlines are processed by deterministic scheduling algorithms or server-side planning models. This processing is designed to occur only through authenticated, rate-limited server endpoints. Your personal data is never retained for public machine learning training.
+              When you generate an automated study schedule in this demo, your course titles and upcoming deadlines are processed entirely in your browser by a deterministic scheduling algorithm. No schedule data is transmitted to StudyPilot servers or third parties, and no server-side processing or machine-learning training takes place.
             </p>
           </section>
 
@@ -116,14 +116,19 @@ export const PrivacyPage: React.FC = () => {
               4. Data Protection & Security Controls
             </h2>
             <p>
-              We implement comprehensive technical and organizational safeguards to protect student data against unauthorized access:
+              In this demo, all data you enter is stored locally in your browser and is not
+              transmitted to any server:
             </p>
             <ul className="list-disc pl-5 space-y-1.5">
-              <li>Granular row-level authorization rules in Firestore ensuring students can only read and write their own records.</li>
-              <li>Encryption in transit using Transport Layer Security (TLS 1.3) and encryption at rest.</li>
-              <li>Hardened HTTP response headers including strict Content Security Policy (CSP), anti-clickjacking frame blocking, and referrer protection.</li>
-              <li>Server-side rate limiting to guard against automated credential stuffing and brute-force attempts.</li>
+              <li>No analytics or tracking integrations are configured in this demo.</li>
+              <li>No data leaves your device; clearing your browser storage removes your local data.</li>
             </ul>
+            <p>
+              The repository also defines Firestore security rules and server-side controls
+              (row-level per-user authorization, rate limiting, hardened response headers). These
+              are not active in this deployment and would apply only if a Firebase backend is
+              connected and those rules are deployed.
+            </p>
           </section>
 
           {/* Section 5 */}
