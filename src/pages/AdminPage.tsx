@@ -15,6 +15,7 @@ import {
   FileText,
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import { configStatus } from '../lib/firebase';
 import { useApp } from '../context/AppContext';
 import { ThreeDSceneCanvas } from '../components/3d/ThreeDSceneCanvas';
 import { Tilt3DCard } from '../components/3d/Tilt3DCard';
@@ -147,6 +148,8 @@ export const AdminPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const refreshData = async () => {
+    // Demo/static hosting: no backend exists; keep seeded sample data and make no network calls.
+    if (!configStatus.isConfigured) return;
     setIsRefreshing(true);
     try {
       const overviewRes = await fetch('/api/admin/overview', {
@@ -176,6 +179,17 @@ export const AdminPage: React.FC = () => {
   }, []);
 
   const toggleRole = async (targetUserId: string) => {
+    if (!configStatus.isConfigured) {
+      setUsers((prev) =>
+        prev.map((u) =>
+          u.id === targetUserId
+            ? { ...u, role: u.role === 'admin' ? 'student' : 'admin' }
+            : u
+        )
+      );
+      showToast('Role Updated (Demo)', 'Sample directory only - no real account changed.', 'info');
+      return;
+    }
     try {
       const res = await fetch('/api/admin/toggle-role', {
         method: 'POST',
