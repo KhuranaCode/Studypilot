@@ -481,13 +481,13 @@ export const LandingPage: React.FC = () => {
                   </div>
                 </div>
                 <div>
-                  <div className="text-xl font-extrabold text-[#7AA7FF] font-mono">0 Trackers</div>
+                  <div className="text-xl font-extrabold text-[#7AA7FF] font-mono">Analytics</div>
                   <div
                     className={`text-[11px] font-medium uppercase tracking-wider ${
                       isDark ? 'text-[#858B95]' : 'text-slate-500'
                     }`}
                   >
-                    No Analytics Integration
+                    Not Configured in This Demo
                   </div>
                 </div>
                 <div>
