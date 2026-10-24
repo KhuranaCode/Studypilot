@@ -121,13 +121,14 @@ export const PrivacyPage: React.FC = () => {
             </p>
             <ul className="list-disc pl-5 space-y-1.5">
               <li>No analytics or tracking integrations are configured in this demo.</li>
-              <li>No data leaves your device; clearing your browser storage removes your local data.</li>
+              <li>None of the data you enter leaves your device; clearing your browser storage removes your local data.</li>
+              <li>The page loads font files from Google Fonts; those requests carry no user data.</li>
             </ul>
             <p>
-              The repository also defines Firestore security rules and server-side controls
-              (row-level per-user authorization, rate limiting, hardened response headers). These
-              are not active in this deployment and would apply only if a Firebase backend is
-              connected and those rules are deployed.
+              The repository also defines Firestore security rules, which would apply only if a
+              Firebase backend is connected and those rules are deployed, plus server-side controls
+              (rate limiting, hardened response headers) that would additionally require a separate
+              server deployment. None of these are active in this static demo.
             </p>
           </section>
 
