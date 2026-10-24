@@ -61,7 +61,7 @@ export const AdminPage: React.FC = () => {
   const { showToast } = useApp();
 
   const [metrics, setMetrics] = useState<AdminMetrics>({
-    aiStatus: 'online',
+    aiStatus: 'unconfigured',
     aiModel: 'Google Gemini 1.5 Flash',
     firestoreStatus: 'healthy',
     uptimeHours: 24.5,
@@ -120,25 +120,25 @@ export const AdminPage: React.FC = () => {
     {
       id: 'aud-1',
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      action: 'ADMIN_SESSION_VERIFIED',
+      action: 'DEMO_SESSION_STARTED',
       actor: user?.email || 'admin@studypilot.edu',
-      details: 'Server verified active administrative authorization.',
+      details: 'Sandbox admin session started locally. No server verification occurs in this demo.',
       status: 'success',
     },
     {
       id: 'aud-2',
       timestamp: '2 hours ago',
-      action: 'RATE_LIMIT_INSPECT',
-      actor: 'system',
-      details: 'Zero quota overages. 15 req/hour cap active per client.',
+      action: 'RATE_LIMIT_POLICY_SAMPLE',
+      actor: 'demo',
+      details: 'Sample entry. Rate limiting is not active in this demo deployment.',
       status: 'success',
     },
     {
       id: 'aud-3',
       timestamp: 'Yesterday',
-      action: 'SECURITY_RULES_VERIFIED',
-      actor: 'system',
-      details: 'Firestore granular user data isolation rules active.',
+      action: 'FIRESTORE_STATUS_SAMPLE',
+      actor: 'demo',
+      details: 'Sample entry. No live Firestore connection in this demo; security rules are not active.',
       status: 'success',
     },
   ]);
@@ -283,8 +283,8 @@ export const AdminPage: React.FC = () => {
                 <h3 className="text-sm font-bold text-slate-900">{metrics.aiModel}</h3>
               </div>
             </div>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-semibold ${metrics.aiStatus === 'online' ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-slate-100 text-slate-600 border border-slate-200'}`}>
+              <span className={`w-2 h-2 rounded-full ${metrics.aiStatus === 'online' ? 'bg-emerald-500 animate-pulse' : 'bg-slate-400'}`} />
               {metrics.aiStatus === 'online' ? 'Active & Ready' : 'Unconfigured Key'}
             </span>
           </Tilt3DCard>
@@ -393,8 +393,8 @@ export const AdminPage: React.FC = () => {
             <div>
               <h2 className="text-base font-bold text-slate-900">User Management Directory</h2>
               <p className="text-xs text-slate-500">
-                Inspect verified user accounts, manage operational roles, and verify activity
-                status.
+                Sample directory for the prototype. Role and status controls here do not change
+                any real accounts.
               </p>
             </div>
             <div className="w-full sm:w-64">
