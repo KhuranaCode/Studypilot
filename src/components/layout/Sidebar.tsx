@@ -12,6 +12,7 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
+import { calculateThisWeekCompletedHours } from '../../lib/studyMetrics';
 import { useAuth } from '../../context/AuthContext';
 import { cn } from '../../lib/utils';
 
@@ -20,9 +21,12 @@ interface SidebarProps {
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({ onNavigate }) => {
-  const { preferences, tasks } = useApp();
+  const { preferences, tasks, sessions } = useApp();
   const { isAdmin } = useAuth();
   const pendingTasksCount = tasks.filter((t) => !t.completed).length;
+  const weeklyGoalHours = preferences.weeklyGoalHours || 25;
+  const completedWeekHours = calculateThisWeekCompletedHours(sessions);
+  const weeklyGoalPercent = Math.min(100, Math.round((completedWeekHours / weeklyGoalHours) * 100));
 
   const navItems = [
     { label: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
@@ -123,16 +127,16 @@ export const Sidebar: React.FC<SidebarProps> = ({ onNavigate }) => {
               <Sparkles className="w-3.5 h-3.5 text-pilot-periwinkle" />
               Weekly Goal
             </span>
-            <span className="font-bold text-pilot-deep dark:text-[#7AA7FF]">68%</span>
+            <span className="font-bold text-pilot-deep dark:text-[#7AA7FF]">{weeklyGoalPercent}%</span>
           </div>
           <div className="w-full bg-slate-200 dark:bg-[#101114] h-1.5 rounded-full overflow-hidden">
             <div
               className="bg-gradient-to-r from-pilot-deep to-pilot-periwinkle h-full rounded-full transition-all duration-500"
-              style={{ width: '68%' }}
+              style={{ width: `${weeklyGoalPercent}%` }}
             />
           </div>
           <p className="text-[11px] text-slate-500 dark:text-[#858B95] mt-1.5">
-            17.0 / {preferences.weeklyGoalHours} hrs completed
+            {completedWeekHours.toFixed(1)} / {weeklyGoalHours} hrs completed
           </p>
         </div>
 
