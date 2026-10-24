@@ -148,12 +148,8 @@ export const TermsPage: React.FC = () => {
               Questions &amp; Inquiries
             </h2>
             <p>
-              For legal inquiries regarding these Terms of Service, contact the StudyPilot legal
-              team at{' '}
-              <span className="font-mono text-pilot-deep dark:text-[#7AA7FF]">
-                legal@studypilot.edu
-              </span>
-              .
+              StudyPilot is a personal prototype project. Questions about these Terms can be
+              raised through the project's public repository.
             </p>
           </section>
         </div>
