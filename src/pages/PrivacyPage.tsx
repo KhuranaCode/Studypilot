@@ -122,7 +122,7 @@ export const PrivacyPage: React.FC = () => {
             <ul className="list-disc pl-5 space-y-1.5">
               <li>No analytics or tracking integrations are configured in this demo.</li>
               <li>None of the data you enter leaves your device; clearing your browser storage removes your local data.</li>
-              <li>The page loads font files from Google Fonts; those requests carry no user data.</li>
+              <li>The page loads font files from Google Fonts; Google receives standard connection/request information for those font requests, but no study records are included.</li>
             </ul>
             <p>
               The repository also defines Firestore security rules, which would apply only if a
