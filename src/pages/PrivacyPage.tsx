@@ -69,7 +69,7 @@ export const PrivacyPage: React.FC = () => {
               1. Our Core Commitment to Student Privacy
             </h2>
             <p>
-              StudyPilot is built to help students manage academic coursework with confidence. We do not sell, rent, monetize, or broker personal student information to advertisers, third-party marketing brokers, or external entities. Your academic workload, study habits, notes, and exam schedules remain private to your account.
+              StudyPilot is built to help students manage academic coursework with confidence. We do not sell, rent, monetize, or broker personal student information to advertisers, third-party marketing brokers, or external entities. Your academic workload, study habits, notes, and exam schedules stay on your device in this demo.
             </p>
           </section>
 
@@ -84,7 +84,7 @@ export const PrivacyPage: React.FC = () => {
             </p>
             <ul className="list-disc pl-5 space-y-1.5">
               <li>
-                <strong>Account Credentials:</strong> Name, university or personal email address, and authentication identifiers managed securely through Firebase Authentication.
+                <strong>Account Credentials:</strong> in this demo, sign-in creates a local sandbox profile stored in your browser; no Firebase Authentication is configured.
               </li>
               <li>
                 <strong>Academic Data:</strong> Enrolled courses (subject names, codes, color labels), assignment titles, due dates, estimated completion times, and user-defined study goals.
@@ -93,7 +93,7 @@ export const PrivacyPage: React.FC = () => {
                 <strong>Focus Sessions:</strong> Timestamps of study intervals, session duration, associated course tags, and reflection notes recorded during timer operation.
               </li>
               <li>
-                <strong>Technical Diagnostics:</strong> Standard operational error logs and rate-limiting metrics to maintain infrastructure health and prevent abuse.
+                <strong>Technical Diagnostics:</strong> none are collected in this demo.
               </li>
             </ul>
           </section>
