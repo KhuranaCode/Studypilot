@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { auth } from '../lib/firebase';
+import { auth, configStatus } from '../lib/firebase';
 import {
   Subject,
   Task,
@@ -179,6 +179,16 @@ export const requestAiStudyPlan = async (
   tasks: Task[],
   existingSessions: StudySession[]
 ): Promise<StudyPlan> => {
+  // Local-only mode: with no backend configured, never transmit study data;
+  // generate the plan entirely in the browser.
+  if (!configStatus.isConfigured) {
+    const localPlan = generateDeterministicPlan(config, subjects, tasks, existingSessions);
+    localPlan.warnings.unshift(
+      'Notice: Generated entirely in your browser. No backend is configured, so no study data left your device.'
+    );
+    return localPlan;
+  }
+
   const token = auth?.currentUser ? await auth.currentUser.getIdToken() : null;
 
   try {
