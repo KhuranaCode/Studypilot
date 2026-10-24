@@ -105,7 +105,7 @@ export const PrivacyPage: React.FC = () => {
               3. Processing of Schedule Information
             </h2>
             <p>
-              When you generate an automated study schedule, your course titles and upcoming deadlines are processed by deterministic scheduling algorithms or server-side planning models. This processing occurs exclusively through authenticated, rate-limited server endpoints. Your personal data is never retained for public machine learning training.
+              When you generate an automated study schedule, your course titles and upcoming deadlines are processed by deterministic scheduling algorithms or server-side planning models. This processing is designed to occur only through authenticated, rate-limited server endpoints. Your personal data is never retained for public machine learning training.
             </p>
           </section>
 
@@ -133,7 +133,7 @@ export const PrivacyPage: React.FC = () => {
               5. Your Rights: Export and Deletion
             </h2>
             <p>
-              You maintain complete ownership of your academic records. You may update your profile preferences, remove course records, or request complete deletion of your account and all associated data at any time from your account settings or by contacting privacy@studypilot.edu.
+              You maintain complete ownership of your academic records. You may update your profile preferences, remove course records, or request complete deletion of your account and all associated data at any time from your account settings.
             </p>
           </section>
 
@@ -141,8 +141,8 @@ export const PrivacyPage: React.FC = () => {
           <section className="space-y-3 pt-4 border-t border-slate-200 dark:border-slate-800">
             <h2 className="text-base font-bold text-slate-900 dark:text-[#F2F3F5]">Contact Information</h2>
             <p>
-              For privacy inquiries, security reports, or data deletion requests, contact the StudyPilot Data Protection Team at{' '}
-              <span className="font-mono text-pilot-deep dark:text-[#7AA7FF]">privacy@studypilot.edu</span>.
+              StudyPilot is a personal prototype project. Privacy inquiries or deletion requests
+              can be raised through the project's public repository.
             </p>
           </section>
         </div>
