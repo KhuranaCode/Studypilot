@@ -1,15 +1,48 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-:root {
-  /* StudyPilot Required 5-Color System */
-  --color-pilot-deep: #3D52A0;       /* Deep blue: primary buttons, selected nav, active states, headings */
-  --color-pilot-periwinkle: #7091E6; /* Periwinkle: secondary accents, progress indicators, highlights */
-  --color-pilot-muted: #8697C4;      /* Muted blue: supporting visuals, icons, informational elements */
-  --color-pilot-soft: #ADBBDA;       /* Soft lavender: borders, subtle backgrounds, dividers */
-  --color-pilot-pale: #EDE8F5;       /* Pale lavender: page backgrounds, spacious surfaces */
-  --color-pilot-dark: #1B2447;       /* Deep contrasting navy for crisp typography */
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-pilot-deep: #3d52a0;
+  --color-pilot-periwinkle: #7091e6;
+  --color-pilot-muted: #8697c4;
+  --color-pilot-soft: #adbbda;
+  --color-pilot-pale: #ede8f5;
+  --color-pilot-dark: #1b2447;
+
+  --font-sans:
+    Inter, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    sans-serif;
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@layer utilities {
+  :root {
+    /* StudyPilot Required 5-Color System */
+    --color-pilot-deep: #3d52a0; /* Deep blue: primary buttons, selected nav, active states, headings */
+    --color-pilot-periwinkle: #7091e6; /* Periwinkle: secondary accents, progress indicators, highlights */
+    --color-pilot-muted: #8697c4; /* Muted blue: supporting visuals, icons, informational elements */
+    --color-pilot-soft: #adbbda; /* Soft lavender: borders, subtle backgrounds, dividers */
+    --color-pilot-pale: #ede8f5; /* Pale lavender: page backgrounds, spacious surfaces */
+    --color-pilot-dark: #1b2447; /* Deep contrasting navy for crisp typography */
+  }
 }
 
 @layer base {
