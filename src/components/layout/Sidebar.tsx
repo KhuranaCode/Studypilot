@@ -51,7 +51,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ onNavigate }) => {
           <Link
             to="/dashboard"
             onClick={onNavigate}
-            className="flex items-center gap-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-pilot-periwinkle rounded-lg"
+            className="flex items-center gap-2.5 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-pilot-periwinkle rounded-lg"
           >
             <div className="w-9 h-9 rounded-xl bg-pilot-deep flex items-center justify-center text-white shadow-3d-btn border-t border-white/20">
               <BookOpen className="w-5 h-5" />
@@ -131,7 +131,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ onNavigate }) => {
           </div>
           <div className="w-full bg-slate-200 dark:bg-[#101114] h-1.5 rounded-full overflow-hidden">
             <div
-              className="bg-gradient-to-r from-pilot-deep to-pilot-periwinkle h-full rounded-full transition-all duration-500"
+              className="bg-linear-to-r from-pilot-deep to-pilot-periwinkle h-full rounded-full transition-all duration-500"
               style={{ width: `${weeklyGoalPercent}%` }}
             />
           </div>
@@ -146,7 +146,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ onNavigate }) => {
           onClick={onNavigate}
           className="flex items-center gap-3 p-2 rounded-xl hover:bg-pilot-pale/60 dark:hover:bg-[#202226]/60 transition-colors group"
         >
-          <div className="w-8 h-8 rounded-lg bg-pilot-deep text-white flex items-center justify-center font-bold text-xs flex-shrink-0 shadow-xs">
+          <div className="w-8 h-8 rounded-lg bg-pilot-deep text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-2xs">
             {(preferences.name || 'Student')
               .split(' ')
               .map((n: string) => n[0])
@@ -158,7 +158,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ onNavigate }) => {
                 {preferences.name}
               </p>
               {isAdmin && (
-                <span className="text-[9px] font-bold uppercase bg-pilot-deep text-white px-1 py-0.2 rounded shrink-0">
+                <span className="text-[9px] font-bold uppercase bg-pilot-deep text-white px-1 py-0.2 rounded-sm shrink-0">
                   Admin
                 </span>
               )}
