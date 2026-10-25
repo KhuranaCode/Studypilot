@@ -15,14 +15,14 @@ export const Badge: React.FC<BadgeProps> = ({
 }) => {
   const variants = {
     // Primary: Pale lavender background with deep blue text and soft lavender border
-    primary: 'bg-[#EDE8F5] text-[#3D52A0] border-[#ADBBDA] font-semibold',
+    primary: 'bg-pilot-pale text-pilot-deep border-pilot-soft font-semibold',
     // Info: Pale lavender with periwinkle text
-    info: 'bg-[#EDE8F5] text-[#7091E6] border-[#ADBBDA] font-semibold',
+    info: 'bg-pilot-pale text-pilot-periwinkle border-pilot-soft font-semibold',
     success: 'bg-emerald-50 text-emerald-700 border-emerald-200/80',
     warning: 'bg-amber-50 text-amber-700 border-amber-200/80',
     danger: 'bg-rose-50 text-rose-700 border-rose-200/80',
     neutral: 'bg-slate-100 text-slate-700 border-slate-200',
-    outline: 'bg-transparent text-[#3D52A0] border-[#ADBBDA]',
+    outline: 'bg-transparent text-pilot-deep border-pilot-soft',
   };
 
   const sizes = {
