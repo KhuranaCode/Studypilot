@@ -20,7 +20,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             {label}
           </label>
         )}
-        <div className="relative rounded-xl shadow-xs">
+        <div className="relative rounded-xl shadow-2xs">
           {leftIcon && (
             <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-pilot-muted dark:text-slate-400">
               {leftIcon}
@@ -31,7 +31,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             id={inputId}
             className={cn(
               'block w-full rounded-xl border bg-white dark:bg-[#15171C] px-3.5 py-2.5 text-sm text-slate-900 dark:text-[#F2F3F5] placeholder:text-slate-400 dark:placeholder:text-slate-500 transition-colors',
-              'focus:outline-none focus:ring-2 focus:ring-pilot-periwinkle focus:border-pilot-deep dark:focus:ring-pilot-periwinkle/50',
+              'focus:outline-hidden focus:ring-2 focus:ring-pilot-periwinkle focus:border-pilot-deep dark:focus:ring-pilot-periwinkle/50',
               leftIcon && 'pl-10',
               rightIcon && 'pr-10',
               error
