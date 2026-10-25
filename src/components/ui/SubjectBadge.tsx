@@ -18,7 +18,7 @@ export const SubjectBadge: React.FC<SubjectBadgeProps> = ({
 
   if (!subject) {
     return (
-      <span className={cn('inline-flex items-center text-xs px-2 py-0.5 rounded font-medium bg-slate-100 text-slate-600', className)}>
+      <span className={cn('inline-flex items-center text-xs px-2 py-0.5 rounded-sm font-medium bg-slate-100 text-slate-600', className)}>
         General
       </span>
     );
