@@ -120,11 +120,11 @@ export const DashboardPage: React.FC = () => {
       <Tilt3DCard
         maxTilt={4}
         glareEffect
-        className="bg-gradient-to-r from-[#202226] via-[#2A2E38] to-[#101114] border border-[#545B66]/60 rounded-3xl p-6 sm:p-8 text-[#F2F3F5] shadow-[0_16px_36px_rgba(0,0,0,0.4),0_3px_0_0_#545B66] relative overflow-hidden"
+        className="bg-linear-to-r from-[#202226] via-[#2A2E38] to-[#101114] border border-[#545B66]/60 rounded-3xl p-6 sm:p-8 text-[#F2F3F5] shadow-[0_16px_36px_rgba(0,0,0,0.4),0_3px_0_0_#545B66] relative overflow-hidden"
       >
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-white/10 border border-white/20 text-[#7AA7FF] text-xs font-semibold mb-1 backdrop-blur-sm">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-white/10 border border-white/20 text-[#7AA7FF] text-xs font-semibold mb-1 backdrop-blur-xs">
               <Flame className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
               <span>
                 {streak > 0 ? `${streak}-Day Consistent Streak` : 'Start Your Study Streak Today'}
@@ -165,7 +165,7 @@ export const DashboardPage: React.FC = () => {
               variant="metallic-chrome"
               size="md"
               onClick={startNextSessionFocus}
-              leftIcon={<Timer className="w-4 h-4 text-[#3D52A0]" />}
+              leftIcon={<Timer className="w-4 h-4 text-pilot-deep" />}
             >
               Start Focus
             </ThreeDButton>
@@ -186,7 +186,7 @@ export const DashboardPage: React.FC = () => {
         className="bg-white dark:bg-[#1A1D24] rounded-2xl border border-pilot-soft/80 dark:border-slate-800 p-5 shadow-[0_3px_0_0_#ADBBDA,0_8px_24px_rgba(61,82,160,0.08)] dark:shadow-none flex flex-col sm:flex-row sm:items-center justify-between gap-4"
       >
         <div className="flex items-start sm:items-center gap-3.5">
-          <div className="p-2.5 rounded-xl bg-gradient-to-br from-[#4A62B6] to-[#27356B] text-white shadow-3d-btn shrink-0 border-t border-white/30">
+          <div className="p-2.5 rounded-xl bg-linear-to-br from-[#4A62B6] to-[#27356B] text-white shadow-3d-btn shrink-0 border-t border-white/30">
             <Brain className="w-5 h-5 text-white" />
           </div>
           <div>
@@ -208,7 +208,7 @@ export const DashboardPage: React.FC = () => {
           size="sm"
           onClick={() => setTipIndex((i) => (i + 1) % STUDY_TIPS.length)}
           leftIcon={<RefreshCw className="w-3.5 h-3.5" />}
-          className="self-end sm:self-center shrink-0 shadow-3d-secondary active:translate-y-[1px]"
+          className="self-end sm:self-center shrink-0 shadow-3d-secondary active:translate-y-px"
         >
           Fresh Tip
         </Button>
@@ -217,7 +217,7 @@ export const DashboardPage: React.FC = () => {
       {nextSession && (
         <Tilt3DCard
           maxTilt={4}
-          className="bg-gradient-to-r from-pilot-pale via-white to-pilot-pale dark:from-[#202226] dark:via-[#1A1D24] dark:to-[#202226] border border-pilot-soft/90 dark:border-slate-800 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-[0_3px_0_0_#ADBBDA,0_8px_20px_rgba(61,82,160,0.06)] dark:shadow-none"
+          className="bg-linear-to-r from-pilot-pale via-white to-pilot-pale dark:from-[#202226] dark:via-[#1A1D24] dark:to-[#202226] border border-pilot-soft/90 dark:border-slate-800 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-[0_3px_0_0_#ADBBDA,0_8px_20px_rgba(61,82,160,0.06)] dark:shadow-none"
         >
           <div className="flex items-center gap-3.5">
             <div className="p-3 bg-pilot-deep text-white rounded-xl shadow-3d-btn shrink-0">
@@ -476,7 +476,7 @@ export const DashboardPage: React.FC = () => {
                 size="sm"
                 onClick={() => setIsTaskModalOpen(true)}
                 leftIcon={<Plus className="w-3.5 h-3.5" />}
-                className="justify-start shadow-3d-secondary active:translate-y-[1px]"
+                className="justify-start shadow-3d-secondary active:translate-y-px"
               >
                 Add Task
               </Button>
@@ -485,7 +485,7 @@ export const DashboardPage: React.FC = () => {
                 size="sm"
                 onClick={startNextSessionFocus}
                 leftIcon={<Timer className="w-3.5 h-3.5 text-indigo-600 dark:text-pilot-electric" />}
-                className="justify-start shadow-3d-secondary active:translate-y-[1px]"
+                className="justify-start shadow-3d-secondary active:translate-y-px"
               >
                 Start Timer
               </Button>
@@ -494,7 +494,7 @@ export const DashboardPage: React.FC = () => {
                   variant="outline"
                   size="sm"
                   leftIcon={<Calendar className="w-3.5 h-3.5" />}
-                  className="w-full justify-start shadow-3d-secondary active:translate-y-[1px]"
+                  className="w-full justify-start shadow-3d-secondary active:translate-y-px"
                 >
                   Schedule
                 </Button>
@@ -504,7 +504,7 @@ export const DashboardPage: React.FC = () => {
                   variant="outline"
                   size="sm"
                   leftIcon={<SquareCheckBig className="w-3.5 h-3.5" />}
-                  className="w-full justify-start shadow-3d-secondary active:translate-y-[1px]"
+                  className="w-full justify-start shadow-3d-secondary active:translate-y-px"
                 >
                   All Tasks
                 </Button>
