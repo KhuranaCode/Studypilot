@@ -310,7 +310,7 @@ export const FocusTimerPage: React.FC = () => {
         className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white dark:bg-[#1A1D24] p-5 rounded-2xl border border-pilot-soft/70 dark:border-slate-800 shadow-[0_3px_0_0_#ADBBDA,0_8px_20px_rgba(61,82,160,0.06)] dark:shadow-none"
       >
         <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-xl bg-gradient-to-br from-[#4A62B6] to-[#27356B] text-white shadow-3d-btn border-t border-white/30">
+          <div className="p-2.5 rounded-xl bg-linear-to-br from-[#4A62B6] to-[#27356B] text-white shadow-3d-btn border-t border-white/30">
             <Timer className="w-5 h-5 text-[#F2F3F5]" />
           </div>
           <div>
@@ -358,7 +358,7 @@ export const FocusTimerPage: React.FC = () => {
             onClick={() => switchMode(targetMinutes > 15 ? targetMinutes : 45, 'focus')}
             className={`flex-1 py-2 text-xs font-semibold rounded-lg transition-all ${
               mode === 'focus'
-                ? 'bg-white dark:bg-[#202226] text-pilot-deep dark:text-[#F2F3F5] shadow-xs'
+                ? 'bg-white dark:bg-[#202226] text-pilot-deep dark:text-[#F2F3F5] shadow-2xs'
                 : 'text-slate-600 dark:text-slate-400 hover:text-pilot-deep dark:hover:text-white'
             }`}
           >
@@ -368,8 +368,8 @@ export const FocusTimerPage: React.FC = () => {
             onClick={() => switchMode(5, 'shortBreak')}
             className={`flex-1 py-2 text-xs font-semibold rounded-lg transition-all flex items-center justify-center gap-1.5 ${
               mode === 'shortBreak'
-                ? 'bg-white dark:bg-[#202226] text-pilot-periwinkle dark:text-[#7091E6] shadow-xs'
-                : 'text-slate-600 dark:text-slate-400 hover:text-pilot-periwinkle dark:hover:text-[#7091E6]'
+                ? 'bg-white dark:bg-[#202226] text-pilot-periwinkle dark:text-pilot-periwinkle shadow-2xs'
+                : 'text-slate-600 dark:text-slate-400 hover:text-pilot-periwinkle dark:hover:text-pilot-periwinkle'
             }`}
           >
             <Coffee className="w-3.5 h-3.5" /> Short Break (5m)
@@ -378,7 +378,7 @@ export const FocusTimerPage: React.FC = () => {
             onClick={() => switchMode(15, 'longBreak')}
             className={`flex-1 py-2 text-xs font-semibold rounded-lg transition-all flex items-center justify-center gap-1.5 ${
               mode === 'longBreak'
-                ? 'bg-white dark:bg-[#202226] text-pilot-muted dark:text-slate-300 shadow-xs'
+                ? 'bg-white dark:bg-[#202226] text-pilot-muted dark:text-slate-300 shadow-2xs'
                 : 'text-slate-600 dark:text-slate-400 hover:text-pilot-muted dark:hover:text-slate-300'
             }`}
           >
@@ -388,7 +388,7 @@ export const FocusTimerPage: React.FC = () => {
 
         <div className="relative my-4 flex flex-col md:flex-row items-center justify-center gap-8 w-full max-w-2xl">
           {show3D && (
-            <div className="w-64 h-64 rounded-2xl bg-gradient-to-b from-[#18191D] to-[#101114] border border-[#545B66]/40 shadow-inner flex items-center justify-center relative overflow-hidden shrink-0">
+            <div className="w-64 h-64 rounded-2xl bg-linear-to-b from-[#18191D] to-[#101114] border border-[#545B66]/40 shadow-inner flex items-center justify-center relative overflow-hidden shrink-0">
               <FocusTimer3DVisual
                 isRunning={isRunning}
                 mode={mode}
@@ -409,7 +409,7 @@ export const FocusTimerPage: React.FC = () => {
                 r={115}
                 strokeWidth={12}
                 fill="transparent"
-                className="stroke-[#EDE8F5] dark:stroke-[#2A2E37]"
+                className="stroke-pilot-pale dark:stroke-[#2A2E37]"
               />
               <circle
                 cx={140}
@@ -546,8 +546,8 @@ export const FocusTimerPage: React.FC = () => {
                   onClick={() => toggleSound(sound.id)}
                   className={`py-2 px-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 border transition-all ${
                     isActive
-                      ? 'bg-pilot-deep text-white border-pilot-deep shadow-3d-btn active:translate-y-[1px]'
-                      : 'bg-pilot-pale/80 hover:bg-pilot-pale dark:bg-[#202226] dark:hover:bg-[#282C34] text-slate-700 dark:text-slate-300 border-pilot-soft/70 dark:border-slate-800 shadow-3d-secondary active:translate-y-[1px]'
+                      ? 'bg-pilot-deep text-white border-pilot-deep shadow-3d-btn active:translate-y-px'
+                      : 'bg-pilot-pale/80 hover:bg-pilot-pale dark:bg-[#202226] dark:hover:bg-[#282C34] text-slate-700 dark:text-slate-300 border-pilot-soft/70 dark:border-slate-800 shadow-3d-secondary active:translate-y-px'
                   }`}
                 >
                   <SoundIcon className="w-3.5 h-3.5 shrink-0" />
