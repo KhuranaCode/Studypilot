@@ -78,7 +78,7 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Mobile menu button */}
         <button
           onClick={onOpenMobileNav}
-          className="lg:hidden p-2 rounded-xl text-slate-500 hover:bg-pilot-pale dark:hover:bg-[#202226] focus:outline-none focus:ring-2 focus:ring-pilot-periwinkle"
+          className="lg:hidden p-2 rounded-xl text-slate-500 hover:bg-pilot-pale dark:hover:bg-[#202226] focus:outline-hidden focus:ring-2 focus:ring-pilot-periwinkle"
           aria-label="Open mobile menu"
         >
           <Menu className="w-5 h-5" />
@@ -101,12 +101,12 @@ export const Header: React.FC<HeaderProps> = ({
           <button
             type="button"
             onClick={onOpenCommandPalette}
-            className="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-pilot-pale/80 hover:bg-pilot-pale border border-pilot-soft/70 text-slate-600 hover:text-pilot-dark text-xs font-medium shadow-3d-secondary active:translate-y-[1px] transition-all"
+            className="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-pilot-pale/80 hover:bg-pilot-pale border border-pilot-soft/70 text-slate-600 hover:text-pilot-dark text-xs font-medium shadow-3d-secondary active:translate-y-px transition-all"
             title="Open Command Palette (Ctrl+K)"
           >
             <Search className="w-3.5 h-3.5 text-pilot-muted" />
             <span className="hidden md:inline">Spotlight</span>
-            <kbd className="px-1.5 py-0.5 text-[10px] font-semibold text-slate-500 bg-white border border-pilot-soft/70 rounded-md shadow-xs">
+            <kbd className="px-1.5 py-0.5 text-[10px] font-semibold text-slate-500 bg-white border border-pilot-soft/70 rounded-md shadow-2xs">
               ⌘K
             </kbd>
           </button>
@@ -158,7 +158,7 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="relative">
           <button
             onClick={() => setShowNotifications(!showNotifications)}
-            className="relative p-2 rounded-xl text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="relative p-2 rounded-xl text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition-colors focus:outline-hidden focus:ring-2 focus:ring-indigo-500"
             aria-label="Notifications"
           >
             <Bell className="w-5 h-5" />
@@ -180,10 +180,10 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="relative">
           <button
             onClick={() => setShowProfileMenu(!showProfileMenu)}
-            className="flex items-center gap-2 p-1 rounded-xl hover:ring-2 hover:ring-pilot-soft transition-all focus:outline-none"
+            className="flex items-center gap-2 p-1 rounded-xl hover:ring-2 hover:ring-pilot-soft transition-all focus:outline-hidden"
             aria-label="User profile menu"
           >
-            <div className="w-8 h-8 rounded-lg bg-pilot-deep text-white font-semibold text-xs flex items-center justify-center shadow-xs">
+            <div className="w-8 h-8 rounded-lg bg-pilot-deep text-white font-semibold text-xs flex items-center justify-center shadow-2xs">
               {(preferences.name || 'Student')
                 .split(' ')
                 .map((n: string) => n[0])
