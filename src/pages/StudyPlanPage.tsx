@@ -113,7 +113,7 @@ export const StudyPlanPage: React.FC = () => {
       {activePlan && (
         <Tilt3DCard
           maxTilt={3}
-          className="bg-gradient-to-r from-[#202226] via-[#2A2E38] to-[#101114] border border-[#545B66]/60 rounded-3xl p-5 sm:p-6 text-[#F2F3F5] flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-[0_12px_32px_rgba(0,0,0,0.35),0_2px_0_0_#545B66]"
+          className="bg-linear-to-r from-[#202226] via-[#2A2E38] to-[#101114] border border-[#545B66]/60 rounded-3xl p-5 sm:p-6 text-[#F2F3F5] flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-[0_12px_32px_rgba(0,0,0,0.35),0_2px_0_0_#545B66]"
         >
           <div className="space-y-1.5">
             <div className="flex items-center gap-2">
@@ -124,7 +124,7 @@ export const StudyPlanPage: React.FC = () => {
               <Badge
                 variant="primary"
                 size="sm"
-                className="bg-[#3D52A0] text-white border-transparent"
+                className="bg-pilot-deep text-white border-transparent"
               >
                 {activePlan.sessions.length} Scheduled Blocks
               </Badge>
@@ -148,7 +148,7 @@ export const StudyPlanPage: React.FC = () => {
         className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-pilot-soft/80 shadow-[0_3px_0_0_#ADBBDA,0_6px_16px_rgba(61,82,160,0.06)]"
       >
         <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-xl bg-gradient-to-br from-[#4A62B6] to-[#27356B] text-white shadow-3d-btn border-t border-white/30">
+          <div className="p-2.5 rounded-xl bg-linear-to-br from-[#4A62B6] to-[#27356B] text-white shadow-3d-btn border-t border-white/30">
             <Calendar className="w-5 h-5 text-white" />
           </div>
           <div>
@@ -169,7 +169,7 @@ export const StudyPlanPage: React.FC = () => {
             <button
               onClick={() => setViewMode('week')}
               className={`px-3 py-1.5 rounded-lg transition-all ${
-                viewMode === 'week' ? 'bg-white text-pilot-deep shadow-xs' : 'hover:text-slate-900'
+                viewMode === 'week' ? 'bg-white text-pilot-deep shadow-2xs' : 'hover:text-slate-900'
               }`}
             >
               <span className="flex items-center gap-1.5">
@@ -179,7 +179,7 @@ export const StudyPlanPage: React.FC = () => {
             <button
               onClick={() => setViewMode('day')}
               className={`px-3 py-1.5 rounded-lg transition-all ${
-                viewMode === 'day' ? 'bg-white text-pilot-deep shadow-xs' : 'hover:text-slate-900'
+                viewMode === 'day' ? 'bg-white text-pilot-deep shadow-2xs' : 'hover:text-slate-900'
               }`}
             >
               <span className="flex items-center gap-1.5">
@@ -330,7 +330,7 @@ export const StudyPlanPage: React.FC = () => {
                               {!session.completed && (
                                 <button
                                   onClick={() => startFocus(session)}
-                                  className="p-1 rounded text-pilot-deep hover:bg-pilot-pale transition-colors"
+                                  className="p-1 rounded-sm text-pilot-deep hover:bg-pilot-pale transition-colors"
                                   title="Start timer for this block"
                                 >
                                   <Timer className="w-3.5 h-3.5" />
@@ -350,7 +350,7 @@ export const StudyPlanPage: React.FC = () => {
                             </div>
                           </div>
                           {hasConflict && (
-                            <div className="mt-1.5 flex items-center gap-1 text-[10px] text-amber-700 font-semibold bg-amber-100/70 px-1.5 py-0.5 rounded">
+                            <div className="mt-1.5 flex items-center gap-1 text-[10px] text-amber-700 font-semibold bg-amber-100/70 px-1.5 py-0.5 rounded-sm">
                               <TriangleAlert className="w-3 h-3 shrink-0" />
                               <span>Time Conflict</span>
                             </div>
