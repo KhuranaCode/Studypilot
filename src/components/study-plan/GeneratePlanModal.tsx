@@ -252,7 +252,7 @@ export const GeneratePlanModal: React.FC<GeneratePlanModalProps> = ({ isOpen, on
                       </span>
                     </div>
                   </div>
-                  <span className="text-[10px] text-indigo-600 font-semibold bg-indigo-50 px-2 py-0.5 rounded shrink-0">
+                  <span className="text-[10px] text-indigo-600 font-semibold bg-indigo-50 px-2 py-0.5 rounded-sm shrink-0">
                     Validated
                   </span>
                 </div>
@@ -374,7 +374,7 @@ export const GeneratePlanModal: React.FC<GeneratePlanModalProps> = ({ isOpen, on
                             type="checkbox"
                             checked={isSelected}
                             onChange={() => {}}
-                            className="rounded text-indigo-600 h-3.5 w-3.5"
+                            className="rounded-sm text-indigo-600 h-3.5 w-3.5"
                           />
                           <span className="font-medium text-slate-800 truncate">{task.title}</span>
                           <SubjectBadge subjectId={task.subjectId} showCodeOnly />
@@ -400,7 +400,7 @@ export const GeneratePlanModal: React.FC<GeneratePlanModalProps> = ({ isOpen, on
                   onClick={() => handleToggleDay(day)}
                   className={`p-2 rounded-xl text-center text-xs font-bold border transition-all ${
                     win.enabled
-                      ? 'bg-indigo-600 text-white border-indigo-600 shadow-xs'
+                      ? 'bg-indigo-600 text-white border-indigo-600 shadow-2xs'
                       : 'bg-white text-slate-400 border-slate-200 hover:bg-slate-50'
                   }`}
                 >
@@ -475,7 +475,7 @@ export const GeneratePlanModal: React.FC<GeneratePlanModalProps> = ({ isOpen, on
                     value={focusNotes}
                     onChange={(e) => setFocusNotes(e.target.value)}
                     placeholder="e.g. Prioritize midterm review for History on Wednesday and Friday..."
-                    className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-indigo-500"
                   />
                 </div>
               </div>
