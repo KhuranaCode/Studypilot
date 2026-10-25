@@ -10,11 +10,11 @@ export const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ childr
   if (authLoading) {
     return (
       <div className="min-h-screen w-screen flex flex-col items-center justify-center bg-pilot-pale text-slate-800">
-        <div className="w-12 h-12 rounded-xl bg-[#3D52A0] flex items-center justify-center text-white shadow-md mb-4 animate-pulse">
+        <div className="w-12 h-12 rounded-xl bg-pilot-deep flex items-center justify-center text-white shadow-md mb-4 animate-pulse">
           <BookOpen className="w-6 h-6" />
         </div>
         <div className="flex items-center gap-2 text-sm font-semibold text-slate-600">
-          <Loader2 className="w-4 h-4 animate-spin text-[#3D52A0]" />
+          <Loader2 className="w-4 h-4 animate-spin text-pilot-deep" />
           <span>Verifying StudyPilot session...</span>
         </div>
       </div>
