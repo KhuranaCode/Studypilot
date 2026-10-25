@@ -43,7 +43,7 @@ export const AdminRoute: React.FC<{ children: React.ReactNode }> = ({ children }
           <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl text-left text-xs space-y-1 text-slate-600">
             <p className="font-semibold text-slate-800">Admin Setup Requirement:</p>
             <p>To provision the first admin account, run:</p>
-            <code className="block bg-slate-100 p-1.5 rounded font-mono text-[11px] text-slate-800 overflow-x-auto">
+            <code className="block bg-slate-100 p-1.5 rounded-sm font-mono text-[11px] text-slate-800 overflow-x-auto">
               ADMIN_BOOTSTRAP_SECRET=&lt;secret&gt; npx tsx scripts/bootstrapAdmin.ts
             </code>
           </div>
