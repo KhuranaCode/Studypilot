@@ -11,7 +11,7 @@ export const PrivacyPage: React.FC = () => {
   return (
     <div
       className={`min-h-screen transition-colors duration-200 py-12 px-4 sm:px-6 lg:px-8 ${
-        isDark ? 'bg-[#101114] text-[#F2F3F5]' : 'bg-[#EDE8F5] text-[#1B2447]'
+        isDark ? 'bg-[#101114] text-[#F2F3F5]' : 'bg-pilot-pale text-pilot-dark'
       }`}
     >
       <div className="max-w-4xl mx-auto space-y-8">

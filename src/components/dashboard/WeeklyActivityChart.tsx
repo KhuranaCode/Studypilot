@@ -20,7 +20,7 @@ export const WeeklyActivityChart: React.FC<WeeklyActivityChartProps> = ({
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-4 text-xs">
           <div className="flex items-center gap-1.5">
-            <span className="w-3 h-3 rounded-sm bg-pilot-deep dark:bg-pilot-electric inline-block" />
+            <span className="w-3 h-3 rounded-xs bg-pilot-deep dark:bg-pilot-electric inline-block" />
             <span className="text-slate-700 dark:text-slate-300 font-medium">Study Hours</span>
           </div>
           <div className="flex items-center gap-1.5">
@@ -30,7 +30,7 @@ export const WeeklyActivityChart: React.FC<WeeklyActivityChartProps> = ({
         </div>
 
         {hoveredDay && (
-          <div className="text-xs bg-pilot-dark text-white px-2.5 py-1 rounded-md shadow-xs animate-in fade-in duration-100">
+          <div className="text-xs bg-pilot-dark text-white px-2.5 py-1 rounded-md shadow-2xs animate-in fade-in duration-100">
             <span className="font-semibold">{hoveredDay.day} ({hoveredDay.fullDate}):</span>{' '}
             <span className="text-pilot-periwinkle font-bold">{hoveredDay.hours} hrs</span> ·{' '}
             <span>{hoveredDay.tasksCompleted} tasks</span>
@@ -68,7 +68,7 @@ export const WeeklyActivityChart: React.FC<WeeklyActivityChartProps> = ({
                   <div
                     className={`w-full max-w-[36px] rounded-t-lg transition-all duration-300 group-hover:brightness-110 ${
                       isTargetMet
-                        ? 'bg-gradient-to-t from-pilot-deep to-pilot-periwinkle shadow-xs'
+                        ? 'bg-linear-to-t from-pilot-deep to-pilot-periwinkle shadow-2xs'
                         : 'bg-pilot-soft dark:bg-slate-800 group-hover:bg-pilot-muted dark:group-hover:bg-slate-700'
                     }`}
                     style={{ height: `${Math.max(heightPercent, 4)}%` }}

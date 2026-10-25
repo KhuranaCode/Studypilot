@@ -24,13 +24,13 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
             {label}
           </label>
         )}
-        <div className="relative rounded-xl shadow-xs">
+        <div className="relative rounded-xl shadow-2xs">
           <select
             ref={ref}
             id={selectId}
             className={cn(
               'block w-full appearance-none rounded-xl border bg-white dark:bg-[#15171C] px-3.5 py-2.5 pr-10 text-sm text-slate-900 dark:text-[#F2F3F5] transition-colors',
-              'focus:outline-none focus:ring-2 focus:ring-pilot-periwinkle focus:border-pilot-deep dark:focus:ring-pilot-periwinkle/50',
+              'focus:outline-hidden focus:ring-2 focus:ring-pilot-periwinkle focus:border-pilot-deep dark:focus:ring-pilot-periwinkle/50',
               error
                 ? 'border-rose-300 dark:border-rose-700 text-rose-900 dark:text-rose-300 focus:border-rose-500 focus:ring-rose-500'
                 : 'border-pilot-soft/70 dark:border-slate-800 hover:border-pilot-muted dark:hover:border-slate-700',

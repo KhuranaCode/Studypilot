@@ -147,7 +147,7 @@ export const TasksPage: React.FC = () => {
         className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white dark:bg-[#1A1D24] p-5 rounded-2xl border border-pilot-soft/80 dark:border-slate-800 shadow-[0_3px_0_0_#ADBBDA,0_6px_16px_rgba(61,82,160,0.06)] dark:shadow-none"
       >
         <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-xl bg-gradient-to-br from-[#4A62B6] to-[#27356B] text-white shadow-3d-btn border-t border-white/30">
+          <div className="p-2.5 rounded-xl bg-linear-to-br from-[#4A62B6] to-[#27356B] text-white shadow-3d-btn border-t border-white/30">
             <CheckSquare className="w-5 h-5 text-white" />
           </div>
           <div>

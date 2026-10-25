@@ -109,7 +109,7 @@ export const SettingsPage: React.FC = () => {
         className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white dark:bg-[#1A1D24] p-5 rounded-2xl border border-pilot-soft/80 dark:border-slate-800 shadow-[0_3px_0_0_#ADBBDA,0_6px_16px_rgba(61,82,160,0.06)] dark:shadow-none"
       >
         <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-xl bg-gradient-to-br from-[#4A62B6] to-[#27356B] text-white shadow-3d-btn border-t border-white/30">
+          <div className="p-2.5 rounded-xl bg-linear-to-br from-[#4A62B6] to-[#27356B] text-white shadow-3d-btn border-t border-white/30">
             <SettingsIcon className="w-5 h-5 text-white" />
           </div>
           <div>
@@ -282,7 +282,7 @@ export const SettingsPage: React.FC = () => {
                 type="checkbox"
                 checked={soundEnabled}
                 onChange={(e) => setSoundEnabled(e.target.checked)}
-                className="h-4 w-4 rounded border-slate-300 text-pilot-deep focus:ring-pilot-periwinkle"
+                className="h-4 w-4 rounded-sm border-slate-300 text-pilot-deep focus:ring-pilot-periwinkle"
               />
               <span className="text-xs text-slate-700 dark:text-slate-300 font-medium">
                 Play gentle harmonic chime when focus timer completes
@@ -293,7 +293,7 @@ export const SettingsPage: React.FC = () => {
                 type="checkbox"
                 checked={emailNotifications}
                 onChange={(e) => setEmailNotifications(e.target.checked)}
-                className="h-4 w-4 rounded border-slate-300 text-pilot-deep focus:ring-pilot-periwinkle"
+                className="h-4 w-4 rounded-sm border-slate-300 text-pilot-deep focus:ring-pilot-periwinkle"
               />
               <span className="text-xs text-slate-700 dark:text-slate-300 font-medium">
                 Receive morning study schedule digest and assignment alerts
@@ -340,7 +340,7 @@ export const SettingsPage: React.FC = () => {
                 >
                   <div className="flex items-center gap-2.5 truncate">
                     <span
-                      className="w-3.5 h-3.5 rounded-full shrink-0 shadow-xs"
+                      className="w-3.5 h-3.5 rounded-full shrink-0 shadow-2xs"
                       style={{ backgroundColor: subject.color }}
                     />
                     <div className="truncate">

@@ -14,12 +14,12 @@ export const FirebaseConfigBanner: React.FC = () => {
         <div className="flex items-center gap-2">
           <ShieldAlert className="w-4 h-4 text-amber-600 shrink-0" />
           <span>
-            <strong>Firebase Setup Mode:</strong> Cloud database requires credentials in <code className="bg-amber-100 px-1 py-0.5 rounded font-mono">.env</code> (missing: {missingConfigKeys.join(', ')}). The application is currently running in local storage preview mode with full interactive capability.
+            <strong>Firebase Setup Mode:</strong> Cloud database requires credentials in <code className="bg-amber-100 px-1 py-0.5 rounded-sm font-mono">.env</code> (missing: {missingConfigKeys.join(', ')}). The application is currently running in local storage preview mode with full interactive capability.
           </span>
         </div>
         <button
           onClick={() => setDismissed(true)}
-          className="text-amber-500 hover:text-amber-700 p-0.5 rounded"
+          className="text-amber-500 hover:text-amber-700 p-0.5 rounded-sm"
           aria-label="Dismiss banner"
         >
           <X className="w-3.5 h-3.5" />

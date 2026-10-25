@@ -85,7 +85,7 @@ const StudyFlightPlanCard: React.FC = () => {
           className={`mt-5 p-4 rounded-2xl border transition-all ${
             isDark
               ? 'bg-[#1F222A] border-slate-800 text-white'
-              : 'bg-gradient-to-r from-pilot-pale/50 via-white to-pilot-pale/30 border-pilot-soft'
+              : 'bg-linear-to-r from-pilot-pale/50 via-white to-pilot-pale/30 border-pilot-soft'
           }`}
         >
           <div className="flex items-center justify-between">
@@ -99,7 +99,7 @@ const StudyFlightPlanCard: React.FC = () => {
             </div>
             <button
               onClick={() => setIsRunning(!isRunning)}
-              className="p-2 rounded-xl transition-transform active:scale-95 flex items-center justify-center bg-[#3D52A0] hover:bg-[#34468B] text-white shadow-sm"
+              className="p-2 rounded-xl transition-transform active:scale-95 flex items-center justify-center bg-pilot-deep hover:bg-[#34468B] text-white shadow-xs"
               title={isRunning ? 'Pause Focus' : 'Resume Focus'}
             >
               {isRunning ? (
@@ -132,7 +132,7 @@ const StudyFlightPlanCard: React.FC = () => {
           </div>
           <div className="mt-2.5 w-full h-1.5 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-[#3D52A0] to-[#7091E6] rounded-full transition-all duration-1000"
+              className="h-full bg-linear-to-r from-[#3D52A0] to-[#7091E6] rounded-full transition-all duration-1000"
               style={{
                 width: `${Math.min(100, Math.max(5, ((1500 - remainingSeconds) / 1500) * 100))}%`,
               }}
@@ -186,7 +186,7 @@ const StudyFlightPlanCard: React.FC = () => {
                 </p>
               </div>
             </div>
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
+            <span className="text-[10px] font-bold px-2 py-0.5 rounded-sm bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
               Done
             </span>
           </div>
@@ -207,7 +207,7 @@ const StudyFlightPlanCard: React.FC = () => {
                 </p>
               </div>
             </div>
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+            <span className="text-[10px] font-bold px-2 py-0.5 rounded-sm bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
               Now
             </span>
           </div>
@@ -252,7 +252,7 @@ const StudyFlightPlanCard: React.FC = () => {
                 </p>
               </div>
             </div>
-            <span className="text-[10px] font-medium px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">
+            <span className="text-[10px] font-medium px-2 py-0.5 rounded-sm bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">
               2:30 PM
             </span>
           </div>
@@ -303,7 +303,7 @@ export const LandingPage: React.FC = () => {
       className={`min-h-screen transition-colors duration-300 overflow-x-hidden relative font-sans ${
         isDark
           ? 'bg-[#101114] text-[#F2F3F5] selection:bg-[#7AA7FF] selection:text-[#101114]'
-          : 'bg-[#EDE8F5] text-[#1B2447] selection:bg-[#7091E6] selection:text-white'
+          : 'bg-pilot-pale text-pilot-dark selection:bg-pilot-periwinkle selection:text-white'
       }`}
     >
       <ThreeDSceneCanvas
@@ -325,7 +325,7 @@ export const LandingPage: React.FC = () => {
           }`}
         >
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#4A62B6] to-[#27356B] flex items-center justify-center text-white shadow-3d-btn group-hover:scale-105 transition-transform duration-200 border-t border-white/30">
+            <div className="w-10 h-10 rounded-xl bg-linear-to-br from-[#4A62B6] to-[#27356B] flex items-center justify-center text-white shadow-3d-btn group-hover:scale-105 transition-transform duration-200 border-t border-white/30">
               <BookOpen className="w-5 h-5 text-[#F2F3F5]" />
             </div>
             <div>
@@ -355,7 +355,7 @@ export const LandingPage: React.FC = () => {
           >
             <a
               href="#features"
-              className={`hover:translate-y-[-1px] transition-all inline-block ${
+              className={`hover:-translate-y-px transition-all inline-block ${
                 isDark ? 'hover:text-[#F2F3F5]' : 'hover:text-pilot-deep'
               }`}
             >
@@ -363,7 +363,7 @@ export const LandingPage: React.FC = () => {
             </a>
             <a
               href="#how-it-works"
-              className={`hover:translate-y-[-1px] transition-all inline-block ${
+              className={`hover:-translate-y-px transition-all inline-block ${
                 isDark ? 'hover:text-[#F2F3F5]' : 'hover:text-pilot-deep'
               }`}
             >
@@ -371,7 +371,7 @@ export const LandingPage: React.FC = () => {
             </a>
             <a
               href="#preview"
-              className={`hover:translate-y-[-1px] transition-all inline-block ${
+              className={`hover:-translate-y-px transition-all inline-block ${
                 isDark ? 'hover:text-[#F2F3F5]' : 'hover:text-pilot-deep'
               }`}
             >
@@ -519,8 +519,8 @@ export const LandingPage: React.FC = () => {
         id="preview"
         className={`relative py-24 z-10 transition-colors ${
           isDark
-            ? 'bg-gradient-to-b from-[#101114] via-[#202226]/40 to-[#101114]'
-            : 'bg-gradient-to-b from-[#EDE8F5] via-white/40 to-[#EDE8F5]'
+            ? 'bg-linear-to-b from-[#101114] via-[#202226]/40 to-[#101114]'
+            : 'bg-linear-to-b from-[#EDE8F5] via-white/40 to-[#EDE8F5]'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -559,15 +559,15 @@ export const LandingPage: React.FC = () => {
             <div
               className={`px-5 py-3.5 flex items-center justify-between border-b ${
                 isDark
-                  ? 'bg-gradient-to-r from-[#202226] to-[#101114] border-[#545B66]/40'
-                  : 'bg-gradient-to-r from-pilot-dark to-[#27346A] border-pilot-dark text-white'
+                  ? 'bg-linear-to-r from-[#202226] to-[#101114] border-[#545B66]/40'
+                  : 'bg-linear-to-r from-pilot-dark to-[#27346A] border-pilot-dark text-white'
               }`}
             >
               <div className="flex items-center gap-2.5">
                 <div className="flex items-center gap-1.5">
-                  <span className="w-3 h-3 rounded-full bg-[#E05252] shadow-xs" />
-                  <span className="w-3 h-3 rounded-full bg-[#E5B53C] shadow-xs" />
-                  <span className="w-3 h-3 rounded-full bg-[#3EB87A] shadow-xs" />
+                  <span className="w-3 h-3 rounded-full bg-[#E05252] shadow-2xs" />
+                  <span className="w-3 h-3 rounded-full bg-[#E5B53C] shadow-2xs" />
+                  <span className="w-3 h-3 rounded-full bg-[#3EB87A] shadow-2xs" />
                 </div>
                 <span
                   className={`text-xs font-mono font-semibold ml-3 hidden sm:inline ${
@@ -598,8 +598,8 @@ export const LandingPage: React.FC = () => {
             <div
               className={`p-6 sm:p-8 space-y-6 ${
                 isDark
-                  ? 'bg-gradient-to-b from-[#18191D] to-[#101114]'
-                  : 'bg-gradient-to-b from-pilot-pale/50 to-white'
+                  ? 'bg-linear-to-b from-[#18191D] to-[#101114]'
+                  : 'bg-linear-to-b from-pilot-pale/50 to-white'
               }`}
             >
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -619,7 +619,7 @@ export const LandingPage: React.FC = () => {
                     className={`p-4 rounded-xl border shadow-inner ${
                       isDark
                         ? 'bg-[#202226]/80 border-[#545B66]/30'
-                        : 'bg-white border-pilot-soft/70 shadow-xs'
+                        : 'bg-white border-pilot-soft/70 shadow-2xs'
                     }`}
                   >
                     <span
@@ -720,7 +720,7 @@ export const LandingPage: React.FC = () => {
                       <Clock className="w-4 h-4 text-rose-500" />
                       Priority Milestones
                     </span>
-                    <span className="text-[10px] font-mono font-bold text-rose-500 uppercase bg-rose-500/10 px-2 py-0.5 rounded border border-rose-500/20">
+                    <span className="text-[10px] font-mono font-bold text-rose-500 uppercase bg-rose-500/10 px-2 py-0.5 rounded-sm border border-rose-500/20">
                       Exam in 3 Days
                     </span>
                   </div>
@@ -831,7 +831,7 @@ export const LandingPage: React.FC = () => {
                 }`}
               >
                 <div
-                  className={`w-12 h-12 rounded-xl bg-gradient-to-br ${feature.gradient} border border-white/20 flex items-center justify-center text-white shadow-3d-btn`}
+                  className={`w-12 h-12 rounded-xl bg-linear-to-br ${feature.gradient} border border-white/20 flex items-center justify-center text-white shadow-3d-btn`}
                 >
                   <feature.icon className="w-6 h-6 text-[#F2F3F5]" />
                 </div>
@@ -908,7 +908,7 @@ export const LandingPage: React.FC = () => {
                 }`}
               >
                 <div
-                  className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.gradient} text-white font-mono font-bold flex items-center justify-center text-base shadow-3d-btn border-t border-white/30`}
+                  className={`w-12 h-12 rounded-xl bg-linear-to-br ${item.gradient} text-white font-mono font-bold flex items-center justify-center text-base shadow-3d-btn border-t border-white/30`}
                 >
                   {item.step}
                 </div>
@@ -930,8 +930,8 @@ export const LandingPage: React.FC = () => {
             maxTilt={4}
             className={`p-12 sm:p-16 rounded-3xl border shadow-elevated ${
               isDark
-                ? 'bg-gradient-to-b from-[#202226] to-[#101114] border-[#545B66]/50 shadow-[0_30px_70px_rgba(0,0,0,0.8),0_2px_0_0_#545B66]'
-                : 'bg-gradient-to-b from-white to-pilot-pale/80 border-pilot-soft/80 shadow-[0_30px_70px_rgba(61,82,160,0.15),0_2px_0_0_#ADBBDA]'
+                ? 'bg-linear-to-b from-[#202226] to-[#101114] border-[#545B66]/50 shadow-[0_30px_70px_rgba(0,0,0,0.8),0_2px_0_0_#545B66]'
+                : 'bg-linear-to-b from-white to-pilot-pale/80 border-pilot-soft/80 shadow-[0_30px_70px_rgba(61,82,160,0.15),0_2px_0_0_#ADBBDA]'
             }`}
           >
             <div
@@ -989,7 +989,7 @@ export const LandingPage: React.FC = () => {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-8">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#4A62B6] to-[#27356B] flex items-center justify-center text-white shadow-3d-btn border-t border-white/20">
+            <div className="w-9 h-9 rounded-xl bg-linear-to-br from-[#4A62B6] to-[#27356B] flex items-center justify-center text-white shadow-3d-btn border-t border-white/20">
               <BookOpen className="w-4 h-4 text-[#F2F3F5]" />
             </div>
             <div>
