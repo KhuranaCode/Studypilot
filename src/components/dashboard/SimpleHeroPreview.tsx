@@ -77,7 +77,7 @@ export const SimpleHeroPreview: React.FC = () => {
           className={`mt-5 p-4 rounded-2xl border transition-all ${
             isDark
               ? 'bg-[#1F222A] border-slate-800 text-white'
-              : 'bg-gradient-to-r from-pilot-pale/50 via-white to-pilot-pale/30 border-pilot-soft'
+              : 'bg-linear-to-r from-pilot-pale/50 via-white to-pilot-pale/30 border-pilot-soft'
           }`}
         >
           <div className="flex items-center justify-between">
@@ -94,8 +94,8 @@ export const SimpleHeroPreview: React.FC = () => {
               onClick={() => setIsPlaying(!isPlaying)}
               className={`p-2 rounded-xl transition-transform active:scale-95 flex items-center justify-center ${
                 isDark
-                  ? 'bg-[#3D52A0] hover:bg-[#4A62B6] text-white shadow-sm'
-                  : 'bg-[#3D52A0] hover:bg-[#34468B] text-white shadow-sm'
+                  ? 'bg-pilot-deep hover:bg-[#4A62B6] text-white shadow-xs'
+                  : 'bg-pilot-deep hover:bg-[#34468B] text-white shadow-xs'
               }`}
               title={isPlaying ? 'Pause Focus' : 'Resume Focus'}
             >
@@ -130,7 +130,7 @@ export const SimpleHeroPreview: React.FC = () => {
           {/* Progress Bar */}
           <div className="mt-2.5 w-full h-1.5 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-[#3D52A0] to-[#7091E6] rounded-full transition-all duration-1000"
+              className="h-full bg-linear-to-r from-[#3D52A0] to-[#7091E6] rounded-full transition-all duration-1000"
               style={{ width: `${Math.min(100, Math.max(5, ((1500 - secondsLeft) / 1500) * 100))}%` }}
             />
           </div>
@@ -184,7 +184,7 @@ export const SimpleHeroPreview: React.FC = () => {
                 </p>
               </div>
             </div>
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
+            <span className="text-[10px] font-bold px-2 py-0.5 rounded-sm bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
               Done
             </span>
           </div>
@@ -208,7 +208,7 @@ export const SimpleHeroPreview: React.FC = () => {
                 </p>
               </div>
             </div>
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+            <span className="text-[10px] font-bold px-2 py-0.5 rounded-sm bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
               Now
             </span>
           </div>
@@ -254,7 +254,7 @@ export const SimpleHeroPreview: React.FC = () => {
                 </p>
               </div>
             </div>
-            <span className="text-[10px] font-medium px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">
+            <span className="text-[10px] font-medium px-2 py-0.5 rounded-sm bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">
               2:30 PM
             </span>
           </div>
