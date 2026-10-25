@@ -72,7 +72,7 @@ export const ProgressPage: React.FC = () => {
         className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-pilot-soft/80 shadow-[0_3px_0_0_#ADBBDA,0_6px_16px_rgba(61,82,160,0.06)]"
       >
         <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-xl bg-gradient-to-br from-[#4A62B6] to-[#27356B] text-white shadow-3d-btn border-t border-white/30">
+          <div className="p-2.5 rounded-xl bg-linear-to-br from-[#4A62B6] to-[#27356B] text-white shadow-3d-btn border-t border-white/30">
             <ChartColumn className="w-5 h-5 text-white" />
           </div>
           <div>
@@ -86,7 +86,7 @@ export const ProgressPage: React.FC = () => {
           <button
             onClick={() => setPeriod('week')}
             className={`px-3 py-1.5 rounded-lg transition-all ${
-              period === 'week' ? 'bg-white text-pilot-deep shadow-xs' : 'hover:text-slate-900'
+              period === 'week' ? 'bg-white text-pilot-deep shadow-2xs' : 'hover:text-slate-900'
             }`}
           >
             Past 7 Days
@@ -94,7 +94,7 @@ export const ProgressPage: React.FC = () => {
           <button
             onClick={() => setPeriod('month')}
             className={`px-3 py-1.5 rounded-lg transition-all ${
-              period === 'month' ? 'bg-white text-pilot-deep shadow-xs' : 'hover:text-slate-900'
+              period === 'month' ? 'bg-white text-pilot-deep shadow-2xs' : 'hover:text-slate-900'
             }`}
           >
             Past 30 Days
