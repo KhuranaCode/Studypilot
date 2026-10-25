@@ -169,9 +169,9 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
             }}
             onKeyDown={handleKeyDown}
             placeholder="Type a command, search tasks, or jump to a page..."
-            className="w-full bg-transparent text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none"
+            className="w-full bg-transparent text-sm text-slate-900 placeholder:text-slate-400 focus:outline-hidden"
           />
-          <kbd className="hidden sm:inline-flex items-center gap-0.5 px-2 py-0.5 text-[10px] font-semibold text-slate-500 bg-white border border-pilot-soft/70 rounded-md shadow-xs">
+          <kbd className="hidden sm:inline-flex items-center gap-0.5 px-2 py-0.5 text-[10px] font-semibold text-slate-500 bg-white border border-pilot-soft/70 rounded-md shadow-2xs">
             ESC
           </kbd>
         </div>
