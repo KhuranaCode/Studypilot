@@ -82,7 +82,7 @@ export const NotificationsPopover: React.FC<NotificationsPopoverProps> = ({ isOp
                 !n.read ? 'bg-indigo-50/30' : ''
               }`}
             >
-              <div className="mt-0.5 p-1.5 rounded-lg bg-white border border-slate-100 shadow-sm shrink-0">
+              <div className="mt-0.5 p-1.5 rounded-lg bg-white border border-slate-100 shadow-xs shrink-0">
                 {getIcon(n.type)}
               </div>
               <div className="flex-1 min-w-0">
