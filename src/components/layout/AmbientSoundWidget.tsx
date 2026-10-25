@@ -51,8 +51,8 @@ export const AmbientSoundWidget: React.FC = () => {
         onClick={() => setIsOpen(!isOpen)}
         className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-150 border ${
           isPlaying
-            ? 'bg-pilot-deep text-white border-pilot-deep shadow-3d-btn active:translate-y-[1px]'
-            : 'bg-white hover:bg-pilot-pale/80 text-pilot-deep border-pilot-soft/70 shadow-3d-secondary active:translate-y-[1px]'
+            ? 'bg-pilot-deep text-white border-pilot-deep shadow-3d-btn active:translate-y-px'
+            : 'bg-white hover:bg-pilot-pale/80 text-pilot-deep border-pilot-soft/70 shadow-3d-secondary active:translate-y-px'
         }`}
         title="Ambient Focus Sounds"
       >
