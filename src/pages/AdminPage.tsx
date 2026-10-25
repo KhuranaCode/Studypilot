@@ -238,7 +238,7 @@ export const AdminPage: React.FC = () => {
           className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-pilot-soft/80 shadow-[0_3px_0_0_#ADBBDA,0_8px_20px_rgba(61,82,160,0.06)]"
         >
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#4A62B6] to-[#27356B] flex items-center justify-center text-white shadow-3d-btn border-t border-white/30">
+            <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#4A62B6] to-[#27356B] flex items-center justify-center text-white shadow-3d-btn border-t border-white/30">
               <ShieldCheck className="w-6 h-6" />
             </div>
             <div>
@@ -441,7 +441,7 @@ export const AdminPage: React.FC = () => {
                     <tr key={u.id} className="hover:bg-slate-50/60 transition-colors">
                       <td className="py-3 px-4">
                         <div className="flex items-center gap-2.5">
-                          <div className="w-7 h-7 rounded-md bg-pilot-pale text-pilot-deep flex items-center justify-center font-bold text-xs shadow-xs">
+                          <div className="w-7 h-7 rounded-md bg-pilot-pale text-pilot-deep flex items-center justify-center font-bold text-xs shadow-2xs">
                             {u.displayName[0]}
                           </div>
                           <span className="font-semibold text-slate-900">{u.displayName}</span>
