@@ -149,24 +149,42 @@ function applySecurityHeaders(res: ServerResponse, origin: string | undefined): 
   );
 }
 
-// Verify if caller is authorized admin
-const verifyAdminAuth = (req: IncomingMessage): boolean => {
+// Demo-only token used by the local mock admin portal (AdminPage). It is a
+// public, committed value - NOT a credential - so it is only honored from
+// loopback. A remote caller can never use it.
+const DEMO_ADMIN_TOKEN = 'admin-token-authenticated';
+
+const isLoopback = (ip: string | undefined): boolean => {
+  if (!ip) return false;
+  const v = ip.replace(/^::ffff:/, '');
+  return v === '127.0.0.1' || v === '::1';
+};
+
+// Verify if caller is authorized admin. The real secret comes only from the
+// ADMIN_BOOTSTRAP_SECRET environment variable; there is deliberately no
+// committed default, so an unconfigured server fails closed.
+export const verifyAdminAuth = (req: IncomingMessage): boolean => {
   const authHeader = req.headers['authorization'];
   const bootstrapSecret = req.headers['x-admin-bootstrap-secret'];
-  const configuredSecret = process.env.ADMIN_BOOTSTRAP_SECRET || 'studypilot_admin_secure_secret_2026';
+  const configuredSecret = process.env.ADMIN_BOOTSTRAP_SECRET;
 
-  // 1. Direct bootstrap secret header match
-  if (bootstrapSecret && bootstrapSecret === configuredSecret) {
-    return true;
-  }
-
-  // 2. Strict Bearer token check
-  if (authHeader && authHeader.startsWith('Bearer ')) {
-    const token = authHeader.split('Bearer ')[1]?.trim();
-    // Strict exact matching (no weak substring checking)
-    if (token === configuredSecret || token === 'admin-token-authenticated') {
+  if (configuredSecret) {
+    // 1. Direct bootstrap secret header match
+    if (bootstrapSecret && bootstrapSecret === configuredSecret) {
       return true;
     }
+    // 2. Strict Bearer token check against the configured secret
+    if (authHeader && authHeader.startsWith('Bearer ')) {
+      const token = authHeader.split('Bearer ')[1]?.trim();
+      if (token === configuredSecret) {
+        return true;
+      }
+    }
+  }
+
+  // 3. Loopback-only demo token for the local mock admin portal
+  if (authHeader === `Bearer ${DEMO_ADMIN_TOKEN}` && isLoopback(req.socket.remoteAddress)) {
+    return true;
   }
 
   return false;
@@ -211,7 +229,14 @@ export async function handleAdminRequest(
     req.on('end', () => {
       try {
         const payload = JSON.parse(bodyStr || '{}');
-        const configuredSecret = process.env.ADMIN_BOOTSTRAP_SECRET || 'studypilot_admin_secure_secret_2026';
+        const configuredSecret = process.env.ADMIN_BOOTSTRAP_SECRET;
+        if (!configuredSecret) {
+          // Fail closed: no committed default exists, so bootstrap cannot run
+          // until the operator sets ADMIN_BOOTSTRAP_SECRET.
+          res.statusCode = 503;
+          res.end(JSON.stringify({ error: 'Admin bootstrap is not configured on this server. Set ADMIN_BOOTSTRAP_SECRET to enable it.' }));
+          return;
+        }
         const providedSecret = req.headers['x-admin-bootstrap-secret'] || payload.bootstrapSecret;
 
         if (providedSecret !== configuredSecret) {
