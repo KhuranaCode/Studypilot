@@ -12,8 +12,13 @@
 
 const targetEmail =
   process.argv[2] || process.env.ADMIN_EMAIL || 'admin@studypilot.edu';
-const secret =
-  process.env.ADMIN_BOOTSTRAP_SECRET || 'studypilot_admin_secure_secret_2026';
+const secret = process.env.ADMIN_BOOTSTRAP_SECRET;
+if (!secret) {
+  console.error(
+    'ERROR: ADMIN_BOOTSTRAP_SECRET is not set. There is no default - set a strong random secret on the server and pass the same value here.'
+  );
+  process.exit(1);
+}
 
 console.log('====================================================');
 console.log('🚀 StudyPilot Administrator Provisioning Tool');
