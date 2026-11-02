@@ -28,8 +28,8 @@ export const formatFirestoreDate = (timestampOrString: unknown): string => {
   if (timestampOrString instanceof Timestamp) {
     return timestampOrString.toDate().toISOString();
   }
-  if (typeof timestampOrString === 'object' && 'toDate' in (timestampOrString as any)) {
-    return (timestampOrString as any).toDate().toISOString();
+  if (typeof timestampOrString === 'object' && 'toDate' in timestampOrString) {
+    return (timestampOrString as { toDate: () => Date }).toDate().toISOString();
   }
   return String(timestampOrString);
 };
@@ -70,7 +70,7 @@ export const initializeUserProfile = async (
   if (!db) throw new Error('Firestore is not initialized');
   const userRef = doc(db, 'users', userId);
 
-  const profile: Record<string, any> = {
+  const profile: Record<string, unknown> = {
     displayName: sanitizeText(initialData.displayName || 'Student', 60),
     email: initialData.email || '',
     role: initialData.role || 'student', // Public signup defaults to student
@@ -92,7 +92,7 @@ export const initializeUserProfile = async (
 
   return {
     id: userId,
-    ...(profile as any),
+    ...(profile as Omit<UserProfile, 'id' | 'createdAt' | 'updatedAt'>),
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
   };
@@ -105,7 +105,7 @@ export const updateUserProfileDoc = async (
   if (!db) return;
   const userRef = doc(db, 'users', userId);
   
-  const sanitizedUpdates: Record<string, any> = { ...updates };
+  const sanitizedUpdates: Record<string, unknown> = { ...updates };
   if (updates.displayName !== undefined) {
     sanitizedUpdates.displayName = sanitizeText(updates.displayName, 60);
   }
