@@ -14,7 +14,9 @@ class AmbientAudioEngine {
 
   private initContext() {
     if (!this.audioCtx) {
-      const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+      const AudioContextClass =
+        window.AudioContext ??
+        (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
       this.audioCtx = new AudioContextClass();
     }
     if (this.audioCtx.state === 'suspended') {
@@ -45,8 +47,9 @@ class AmbientAudioEngine {
         window.clearInterval(node);
       } else {
         try {
-          if ('stop' in node && typeof (node as any).stop === 'function') {
-            (node as any).stop();
+          const stoppable = node as AudioNode & { stop?: () => void };
+          if (typeof stoppable.stop === 'function') {
+            stoppable.stop();
           }
           node.disconnect();
         } catch {
