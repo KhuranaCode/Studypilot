@@ -314,7 +314,7 @@ export const LandingPage: React.FC = () => {
 
       <header className="fixed top-4 inset-x-0 z-50 max-w-6xl mx-auto px-4 sm:px-6">
         <div
-          className={`rounded-2xl transition-all duration-300 backdrop-blur-xl border flex items-center justify-between px-5 h-16 ${
+          className={`rounded-2xl transition-all duration-300 backdrop-blur-xl border flex items-center justify-between px-3 sm:px-5 h-16 ${
             isDark
               ? scrollY > 40
                 ? 'bg-[#101114]/90 border-[#545B66]/40 shadow-[0_12px_30px_rgba(0,0,0,0.6),0_1px_0_0_rgba(242,243,245,0.1)]'
@@ -379,13 +379,13 @@ export const LandingPage: React.FC = () => {
             </a>
           </nav>
 
-          <div className="flex items-center gap-2.5 sm:gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <ThemeToggle showLabel={false} />
             <Link to="/login">
               <Button
                 variant="ghost"
                 size="sm"
-                className={`text-xs font-medium ${
+                className={`hidden sm:inline-flex text-xs font-medium whitespace-nowrap ${
                   isDark
                     ? 'text-[#BFC3C9] hover:text-[#F2F3F5] hover:bg-[#202226]/80'
                     : 'text-slate-700 hover:text-pilot-deep hover:bg-pilot-pale'
@@ -398,6 +398,7 @@ export const LandingPage: React.FC = () => {
               <ThreeDButton
                 variant="metallic-deep"
                 size="sm"
+                className="whitespace-nowrap"
                 rightIcon={<ArrowRight className="w-3.5 h-3.5" />}
               >
                 Launch App
