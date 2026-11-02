@@ -1,5 +1,5 @@
 import { Suspense, lazy } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { AppProvider } from './context/AppContext';
 import { ThemeProvider } from './context/ThemeContext';
@@ -40,7 +40,7 @@ export function App() {
     <ThemeProvider>
       <AuthProvider>
         <AppProvider>
-          <BrowserRouter>
+          <HashRouter>
             <Suspense fallback={<PageLoadingFallback />}>
               <Routes>
                 {/* Public Marketing Route */}
@@ -99,7 +99,7 @@ export function App() {
                 <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
             </Suspense>
-          </BrowserRouter>
+          </HashRouter>
         </AppProvider>
       </AuthProvider>
     </ThemeProvider>
