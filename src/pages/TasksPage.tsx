@@ -60,7 +60,6 @@ export const TasksPage: React.FC = () => {
       if (activeTab === 'overdue') {
         if (task.completed || task.dueDate >= todayStr) return false;
       }
-      if (activeTab === 'all' && false) return false;
 
       // Subject filter
       if (selectedSubject !== 'all' && task.subjectId !== selectedSubject) return false;
