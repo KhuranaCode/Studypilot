@@ -47,7 +47,7 @@ export const Header: React.FC<HeaderProps> = ({
       case '/study-plan':
         return 'Personalized Study Plan';
       case '/tasks':
-        return 'Task & Assignment Tracker';
+        return 'Tasks';
       case '/focus':
       case '/focus-timer':
         return 'Deep Focus Session';
