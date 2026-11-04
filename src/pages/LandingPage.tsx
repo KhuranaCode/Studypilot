@@ -461,7 +461,7 @@ export const LandingPage: React.FC = () => {
                 </a>
               </div>
               <div
-                className={`pt-6 grid grid-cols-3 gap-4 text-center lg:text-left border-t ${
+                className={`pt-6 hidden sm:grid grid-cols-3 gap-4 text-center lg:text-left border-t ${
                   isDark ? 'border-[#202226]' : 'border-pilot-soft/50'
                 }`}
               >
@@ -507,6 +507,33 @@ export const LandingPage: React.FC = () => {
                     Flow Cycles
                   </div>
                 </div>
+              </div>
+              <div
+                className={`pt-4 mt-0 grid gap-2 sm:hidden border-t ${
+                  isDark ? 'border-[#202226]' : 'border-pilot-soft/50'
+                }`}
+              >
+                {[
+                  { v: 'Local', l: 'Browser Storage in Demo', c: isDark ? 'text-[#F2F3F5]' : 'text-slate-900' },
+                  { v: 'Analytics', l: 'Not Configured in This Demo', c: 'text-[#7AA7FF]' },
+                  { v: '45 Min', l: 'Flow Cycles', c: isDark ? 'text-[#BFC3C9]' : 'text-pilot-deep' },
+                ].map((s2) => (
+                  <div
+                    key={s2.l}
+                    className={`flex items-baseline justify-between gap-3 rounded-lg px-3 py-2 ${
+                      isDark ? 'bg-[#14161A]/60' : 'bg-white/60'
+                    }`}
+                  >
+                    <span className={`text-base font-extrabold font-mono ${s2.c}`}>{s2.v}</span>
+                    <span
+                      className={`text-[10px] font-medium uppercase tracking-wider text-right ${
+                        isDark ? 'text-[#858B95]' : 'text-slate-500'
+                      }`}
+                    >
+                      {s2.l}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
             <div className="lg:col-span-6 relative flex items-center justify-center">
