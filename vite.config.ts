@@ -5,6 +5,8 @@ import { handleAdminRequest } from './server/adminBackendHandler';
 
 // https://vite.dev/config/
 export default defineConfig({
+  // Serve from GitHub Pages subpath (docs/dist/) - use relative asset paths
+  base: './',
   plugins: [
     react(),
     {
