@@ -171,7 +171,8 @@ export const TasksPage: React.FC = () => {
       <Tilt3DCard maxTilt={2} className="p-4 space-y-4 bg-white dark:bg-[#1A1D24] rounded-2xl border border-pilot-soft/80 dark:border-slate-800 shadow-card">
         {/* Navigation Tabs */}
         <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3 flex-wrap gap-2">
-          <div className="flex items-center gap-1.5 flex-wrap">
+          <div className="relative min-w-0 w-full sm:w-auto sm:flex-1">
+            <div className="flex items-center gap-1.5 flex-nowrap overflow-x-auto -mx-1 px-1 pb-1 sm:flex-wrap sm:overflow-visible sm:mx-0 sm:px-0 sm:pb-0">
             {(
               [
                 { id: 'all', label: 'All Tasks' },
@@ -184,7 +185,7 @@ export const TasksPage: React.FC = () => {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 ${
+                className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 shrink-0 whitespace-nowrap ${
                   activeTab === tab.id
                     ? 'bg-pilot-pale dark:bg-pilot-deep/30 text-pilot-deep dark:text-pilot-electric shadow-[0_2px_0_0_#ADBBDA] dark:shadow-none border border-pilot-soft dark:border-slate-700'
                     : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800'
@@ -202,6 +203,11 @@ export const TasksPage: React.FC = () => {
                 </span>
               </button>
             ))}
+            </div>
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-white dark:from-[#1A1D24] to-transparent sm:hidden"
+            />
           </div>
 
           <span className="text-xs text-slate-400 dark:text-slate-500 font-medium font-mono">
