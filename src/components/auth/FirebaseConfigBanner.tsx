@@ -3,7 +3,7 @@ import { useAuth } from '../../context/AuthContext';
 import { X, ShieldAlert } from 'lucide-react';
 
 export const FirebaseConfigBanner: React.FC = () => {
-  const { isFirebaseReady, missingConfigKeys } = useAuth();
+  const { isFirebaseReady } = useAuth();
   const [dismissed, setDismissed] = useState(false);
 
   if (isFirebaseReady || dismissed) return null;
@@ -14,7 +14,7 @@ export const FirebaseConfigBanner: React.FC = () => {
         <div className="flex items-center gap-2">
           <ShieldAlert className="w-4 h-4 text-amber-600 shrink-0" />
           <span>
-            <strong>Firebase Setup Mode:</strong> Cloud database requires credentials in <code className="bg-amber-100 px-1 py-0.5 rounded-sm font-mono">.env</code> (missing: {missingConfigKeys.join(', ')}). The application is currently running in local storage preview mode with full interactive capability.
+            <strong>Preview Mode:</strong> Cloud sync is not connected in this demo build, so your data stays in this browser.
           </span>
         </div>
         <button
