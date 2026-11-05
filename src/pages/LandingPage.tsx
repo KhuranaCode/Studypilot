@@ -154,10 +154,10 @@ const StudyFlightPlanCard: React.FC = () => {
                 : 'bg-slate-50/70 border-slate-200/80 hover:border-pilot-soft'
             }`}
           >
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 min-w-0">
               <button
                 type="button"
-                className={`transition-colors ${
+                className={`shrink-0 transition-colors ${
                   completedBlocks['task-1']
                     ? 'text-emerald-500'
                     : isDark
@@ -169,9 +169,9 @@ const StudyFlightPlanCard: React.FC = () => {
                   className={`w-4 h-4 ${completedBlocks['task-1'] ? 'fill-emerald-500/20' : ''}`}
                 />
               </button>
-              <div>
+              <div className="min-w-0">
                 <p
-                  className={`text-xs font-semibold transition-colors ${
+                  className={`text-xs font-semibold transition-colors truncate ${
                     completedBlocks['task-1']
                       ? 'line-through text-slate-400 dark:text-slate-500'
                       : isDark
@@ -181,12 +181,12 @@ const StudyFlightPlanCard: React.FC = () => {
                 >
                   MATH 201 · Multivariable Calculus
                 </p>
-                <p className="text-[11px] text-slate-400 dark:text-slate-500">
+                <p className="text-[11px] text-slate-400 dark:text-slate-500 truncate">
                   09:00 - 10:30 · 1.5 hrs completed
                 </p>
               </div>
             </div>
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded-sm bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
+            <span className="text-[10px] font-bold px-2 py-0.5 rounded-sm bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 whitespace-nowrap shrink-0">
               Done
             </span>
           </div>
@@ -196,18 +196,18 @@ const StudyFlightPlanCard: React.FC = () => {
               isDark ? 'bg-blue-950/20 border-blue-500/30' : 'bg-blue-50/60 border-blue-200/80'
             }`}
           >
-            <div className="flex items-center gap-3">
-              <span className="w-2 h-2 rounded-full bg-blue-500 animate-ping" />
-              <div>
-                <p className="text-xs font-bold text-blue-600 dark:text-blue-400">
+            <div className="flex items-center gap-3 min-w-0">
+              <span className="w-2 h-2 rounded-full bg-blue-500 animate-ping shrink-0" />
+              <div className="min-w-0">
+                <p className="text-xs font-bold text-blue-600 dark:text-blue-400 truncate">
                   CS 301 · Graph Traversal &amp; Dijkstra
                 </p>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                <p className="text-[11px] text-slate-500 dark:text-slate-400 truncate">
                   11:00 - 12:15 · Active Focus Block
                 </p>
               </div>
             </div>
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded-sm bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+            <span className="text-[10px] font-bold px-2 py-0.5 rounded-sm bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 whitespace-nowrap shrink-0">
               Now
             </span>
           </div>
@@ -220,10 +220,10 @@ const StudyFlightPlanCard: React.FC = () => {
                 : 'bg-slate-50/70 border-slate-200/80 hover:border-pilot-soft'
             }`}
           >
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 min-w-0">
               <button
                 type="button"
-                className={`transition-colors ${
+                className={`shrink-0 transition-colors ${
                   completedBlocks['task-3']
                     ? 'text-emerald-500'
                     : isDark
@@ -235,9 +235,9 @@ const StudyFlightPlanCard: React.FC = () => {
                   className={`w-4 h-4 ${completedBlocks['task-3'] ? 'fill-emerald-500/20' : ''}`}
                 />
               </button>
-              <div>
+              <div className="min-w-0">
                 <p
-                  className={`text-xs font-semibold transition-colors ${
+                  className={`text-xs font-semibold transition-colors truncate ${
                     completedBlocks['task-3']
                       ? 'line-through text-slate-400 dark:text-slate-500'
                       : isDark
@@ -247,12 +247,12 @@ const StudyFlightPlanCard: React.FC = () => {
                 >
                   PHYS 101 · Electromagnetic Fields
                 </p>
-                <p className="text-[11px] text-slate-400 dark:text-slate-500">
+                <p className="text-[11px] text-slate-400 dark:text-slate-500 truncate">
                   14:30 - 15:45 · Spaced Review
                 </p>
               </div>
             </div>
-            <span className="text-[10px] font-medium px-2 py-0.5 rounded-sm bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">
+            <span className="text-[10px] font-medium px-2 py-0.5 rounded-sm bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 whitespace-nowrap shrink-0">
               2:30 PM
             </span>
           </div>
@@ -748,7 +748,7 @@ export const LandingPage: React.FC = () => {
                       <Clock className="w-4 h-4 text-rose-500" />
                       Priority Milestones
                     </span>
-                    <span className="text-[10px] font-mono font-bold text-rose-500 uppercase bg-rose-500/10 px-2 py-0.5 rounded-sm border border-rose-500/20">
+                    <span className="text-[10px] font-mono font-bold text-rose-500 uppercase bg-rose-500/10 px-2 py-0.5 rounded-sm border border-rose-500/20 whitespace-nowrap shrink-0">
                       Exam in 3 Days
                     </span>
                   </div>
@@ -760,15 +760,15 @@ export const LandingPage: React.FC = () => {
                           : 'bg-slate-50 border-slate-200'
                       }`}
                     >
-                      <div>
-                        <p className={`font-medium ${isDark ? 'text-[#F2F3F5]' : 'text-slate-900'}`}>
+                      <div className="min-w-0">
+                        <p className={`font-medium truncate ${isDark ? 'text-[#F2F3F5]' : 'text-slate-900'}`}>
                           HIST 110 · Industrial Revolution Exam
                         </p>
                         <span className={`text-[11px] ${isDark ? 'text-[#858B95]' : 'text-slate-500'}`}>
                           Closed-book essay exam
                         </span>
                       </div>
-                      <span className="text-[11px] font-bold text-rose-500 font-mono">CRITICAL</span>
+                      <span className="text-[11px] font-bold text-rose-500 font-mono whitespace-nowrap shrink-0">CRITICAL</span>
                     </div>
                     <div
                       className={`p-3 rounded-xl border flex items-center justify-between text-xs ${
@@ -777,15 +777,15 @@ export const LandingPage: React.FC = () => {
                           : 'bg-slate-50 border-slate-200'
                       }`}
                     >
-                      <div>
-                        <p className={`font-medium ${isDark ? 'text-[#F2F3F5]' : 'text-slate-900'}`}>
+                      <div className="min-w-0">
+                        <p className={`font-medium truncate ${isDark ? 'text-[#F2F3F5]' : 'text-slate-900'}`}>
                           CS 250 · Graph Search Benchmarks
                         </p>
                         <span className={`text-[11px] ${isDark ? 'text-[#858B95]' : 'text-slate-500'}`}>
                           Due tomorrow at 23:59
                         </span>
                       </div>
-                      <span className="text-[11px] font-bold text-amber-500 font-mono">HIGH</span>
+                      <span className="text-[11px] font-bold text-amber-500 font-mono whitespace-nowrap shrink-0">HIGH</span>
                     </div>
                   </div>
                 </div>
