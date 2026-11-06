@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { Sidebar } from './Sidebar';
 import { Header } from './Header';
 import { MobileNav } from './MobileNav';
+import { MobileTabBar } from './MobileTabBar';
 import { TaskModal } from '../tasks/TaskModal';
 import { GeneratePlanModal } from '../study-plan/GeneratePlanModal';
 import { CommandPalette } from './CommandPalette';
@@ -56,9 +57,12 @@ export const AppLayout: React.FC = () => {
           onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
         />
 
-        <main className="flex-1 overflow-y-auto px-4 py-6 sm:px-8 sm:py-8 relative">
+        <main className="flex-1 overflow-y-auto px-4 py-6 pb-24 lg:pb-8 sm:px-8 sm:py-8 relative">
           <Outlet />
         </main>
+
+        {/* Mobile Bottom Tab Bar */}
+        <MobileTabBar />
       </div>
 
       {/* Modals & Toasts */}
