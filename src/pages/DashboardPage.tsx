@@ -152,12 +152,13 @@ export const DashboardPage: React.FC = () => {
               )}
             </p>
           </div>
-          <div className="flex flex-wrap items-center gap-3 shrink-0">
+          <div className="grid grid-cols-2 gap-3 w-full sm:w-auto sm:flex sm:flex-wrap sm:items-center shrink-0">
             <ThreeDButton
               variant="electric"
               size="md"
               onClick={() => setIsPlanModalOpen(true)}
               leftIcon={<Sparkles className="w-4 h-4" />}
+              className="col-span-2 w-full sm:col-span-1 sm:w-auto"
             >
               Generate AI Plan
             </ThreeDButton>
@@ -166,6 +167,7 @@ export const DashboardPage: React.FC = () => {
               size="md"
               onClick={startNextSessionFocus}
               leftIcon={<Timer className="w-4 h-4 text-pilot-deep" />}
+              className="w-full sm:w-auto"
             >
               Start Focus
             </ThreeDButton>
@@ -174,6 +176,7 @@ export const DashboardPage: React.FC = () => {
               size="md"
               onClick={() => setIsTaskModalOpen(true)}
               leftIcon={<Plus className="w-4 h-4" />}
+              className="w-full sm:w-auto"
             >
               Add Task
             </ThreeDButton>
@@ -239,12 +242,13 @@ export const DashboardPage: React.FC = () => {
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-2 self-end sm:self-center">
+          <div className="flex items-center gap-2 w-full sm:w-auto sm:self-center">
             <ThreeDButton
               variant="metallic-deep"
               size="sm"
               onClick={() => startFocusFor(nextSession.subjectId, nextSession.taskId)}
               leftIcon={<Timer className="w-4 h-4" />}
+              className="flex-1 sm:flex-initial"
             >
               Start Focus Session
             </ThreeDButton>
@@ -257,7 +261,7 @@ export const DashboardPage: React.FC = () => {
         </Tilt3DCard>
       )}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         <Tilt3DCard maxTilt={6}>
           <StatCard
             title="Today's Study Time"
