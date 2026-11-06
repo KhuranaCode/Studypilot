@@ -13,6 +13,9 @@
   --font-sans:
     Inter, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
     sans-serif;
+  --font-display:
+    Sora, Inter, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, sans-serif;
 }
 
 /*
@@ -48,6 +51,12 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: 'Sora', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    letter-spacing: -0.015em;
   }
   body {
     background-color: #EDE8F5;
