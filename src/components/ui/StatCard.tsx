@@ -31,8 +31,8 @@ export const StatCard: React.FC<StatCardProps> = ({
           {icon}
         </div>
       </div>
-      <div className="mt-2.5 flex items-baseline gap-2">
-        <span className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">{value}</span>
+      <div className="mt-2.5 flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+        <span className="text-xl sm:text-2xl font-bold tracking-tight whitespace-nowrap text-slate-900 dark:text-white">{value}</span>
         {change && (
           <span
             className={cn(
