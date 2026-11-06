@@ -461,7 +461,7 @@ export const LandingPage: React.FC = () => {
                 </a>
               </div>
               <div
-                className={`pt-6 hidden sm:grid grid-cols-3 gap-4 text-center lg:text-left border-t ${
+                className={`pt-6 grid grid-cols-3 gap-3 sm:gap-4 text-center lg:text-left border-t ${
                   isDark ? 'border-[#202226]' : 'border-pilot-soft/50'
                 }`}
               >
