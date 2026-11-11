@@ -15,7 +15,9 @@ export interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElemen
 
 export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
   ({ className, label, error, options, children, id, ...props }, ref) => {
-    const selectId = id || (label ? label.toLowerCase().replace(/\s+/g, '-') : undefined);
+    const generatedId = React.useId();
+    const selectId = id || (label ? label.toLowerCase().replace(/\s+/g, '-') : generatedId);
+    const errorId = `${selectId}-error`;
 
     return (
       <div className="w-full space-y-1.5 text-left">
@@ -28,6 +30,8 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
           <select
             ref={ref}
             id={selectId}
+            aria-invalid={error ? true : undefined}
+            aria-describedby={error ? errorId : undefined}
             className={cn(
               'block w-full appearance-none rounded-xl border bg-white dark:bg-[#15171C] px-3.5 py-2.5 pr-10 text-sm text-slate-900 dark:text-[#F2F3F5] transition-colors',
               'focus:outline-hidden focus:ring-2 focus:ring-pilot-periwinkle focus:border-pilot-deep dark:focus:ring-pilot-periwinkle/50',
@@ -50,7 +54,7 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
             <ChevronDown className="h-4 w-4" />
           </div>
         </div>
-        {error && <p className="text-xs text-rose-600 dark:text-rose-400 font-medium">{error}</p>}
+        {error && <p id={errorId} className="text-xs text-rose-600 dark:text-rose-400 font-medium">{error}</p>}
       </div>
     );
   }
