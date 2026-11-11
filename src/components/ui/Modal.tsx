@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { X } from 'lucide-react';
 import { cn } from '../../lib/utils';
 
@@ -19,17 +19,23 @@ export const Modal: React.FC<ModalProps> = ({
   children,
   maxWidth = 'md',
 }) => {
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const titleId = React.useId();
+  const descriptionId = React.useId();
+
   useEffect(() => {
+    if (!isOpen) return;
+    const previouslyFocused = document.activeElement as HTMLElement | null;
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
     };
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-      window.addEventListener('keydown', handleKeyDown);
-    }
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+    dialogRef.current?.focus();
     return () => {
       document.body.style.overflow = 'unset';
       window.removeEventListener('keydown', handleKeyDown);
+      previouslyFocused?.focus?.();
     };
   }, [isOpen, onClose]);
 
@@ -54,17 +60,21 @@ export const Modal: React.FC<ModalProps> = ({
 
       {/* Modal Dialog */}
       <div
+        ref={dialogRef}
         role="dialog"
         aria-modal="true"
+        aria-labelledby={title ? titleId : undefined}
+        aria-describedby={description ? descriptionId : undefined}
+        tabIndex={-1}
         className={cn(
-          'relative w-full rounded-2xl bg-white shadow-elevated border border-slate-200/90 z-10 transition-all transform',
+          'relative w-full rounded-2xl bg-white shadow-elevated border border-slate-200/90 z-10 transition-all transform focus:outline-none',
           maxWidths[maxWidth]
         )}
       >
         <div className="flex items-center justify-between border-b border-slate-100 px-6 py-4">
           <div>
-            {title && <h3 className="text-lg font-semibold text-slate-900">{title}</h3>}
-            {description && <p className="text-xs text-slate-500 mt-0.5">{description}</p>}
+            {title && <h3 id={titleId} className="text-lg font-semibold text-slate-900">{title}</h3>}
+            {description && <p id={descriptionId} className="text-xs text-slate-500 mt-0.5">{description}</p>}
           </div>
           <button
             onClick={onClose}
