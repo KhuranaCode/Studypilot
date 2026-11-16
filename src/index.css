@@ -135,3 +135,15 @@
   box-shadow: 0 0.5px 0 0 #ADBBDA, 0 1px 2px rgba(61, 82, 160, 0.04);
 }
 
+
+/* Respect user reduced-motion preference: kill looping animations, transitions, smooth scroll */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
