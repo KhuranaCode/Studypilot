@@ -32,6 +32,17 @@ export const AppLayout: React.FC = () => {
 
   return (
     <div className="flex h-screen w-screen overflow-hidden bg-pilot-pale dark:bg-[#101114] text-slate-900 dark:text-[#F2F3F5] font-sans relative transition-colors">
+      <a
+        href="#main-content"
+        onClick={(e) => {
+          e.preventDefault();
+          const m = document.getElementById('main-content');
+          if (m) { m.focus(); m.scrollIntoView(); }
+        }}
+        className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-3 focus:left-3 focus:px-4 focus:py-2 focus:rounded-lg focus:bg-white focus:text-slate-900 focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:bg-slate-800 dark:focus:text-white"
+      >
+        Skip to main content
+      </a>
       {/* Real-Time Ambient 3D Spatial Canvas for Entire App Workspace */}
       <ThreeDSceneCanvas
         className="fixed inset-0 pointer-events-none z-0 opacity-25"
@@ -57,7 +68,7 @@ export const AppLayout: React.FC = () => {
           onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
         />
 
-        <main className="flex-1 overflow-y-auto px-4 py-6 pb-24 lg:pb-8 sm:px-8 sm:py-8 relative">
+        <main id="main-content" tabIndex={-1} className="flex-1 overflow-y-auto px-4 py-6 pb-24 lg:pb-8 sm:px-8 sm:py-8 relative focus:outline-none">
           <Outlet />
         </main>
 
