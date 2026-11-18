@@ -140,7 +140,7 @@ export const SignupPage: React.FC = () => {
           className="p-8 shadow-elevated bg-white border border-pilot-soft/80 rounded-3xl"
         >
           {error && (
-            <div className="mb-4 p-3 rounded-xl bg-rose-50 border border-rose-200 text-xs text-rose-700 flex items-center gap-2">
+            <div role="alert" className="mb-4 p-3 rounded-xl bg-rose-50 border border-rose-200 text-xs text-rose-700 flex items-center gap-2">
               <CircleAlert className="w-4 h-4 shrink-0 text-rose-500" />
               <span>{error}</span>
             </div>
