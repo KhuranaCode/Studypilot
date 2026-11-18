@@ -6,10 +6,15 @@ import { cn } from '../../lib/utils';
 export const ToastContainer: React.FC = () => {
   const { toasts, dismissToast } = useApp();
 
-  if (toasts.length === 0) return null;
-
+  // Container always renders: a live region must exist in the DOM before
+  // content appears for screen readers to reliably announce new toasts.
   return (
-    <div className="fixed bottom-5 right-5 z-50 flex flex-col gap-2 max-w-sm w-full pointer-events-none">
+    <div
+      className="fixed bottom-5 right-5 z-50 flex flex-col gap-2 max-w-sm w-full pointer-events-none"
+      role="region"
+      aria-label="Notifications"
+      aria-live="polite"
+    >
       {toasts.map((toast) => {
         const icons = {
           success: <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />,
