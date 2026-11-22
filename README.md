@@ -61,7 +61,7 @@ StudyPilot features a cohesive, premium blue-and-lavender theme built on CSS cus
 * **Authentication & Database**: Firebase Authentication (v10 SDK), Cloud Firestore
 * **Validation**: Zod schema validation
 * **AI Provider**: Google Gemini 1.5 Flash with deterministic engine fallback
-* **Testing**: Node.js native test runner (`node:test`, `node:assert`) with `tsx` (37/37 automated tests)
+* **Testing**: Vitest (18 automated tests across 3 suites)
 * **Deployment**: Firebase Hosting SPA configuration with automated cache headers and Cloud Firestore indexes
 
 ---
@@ -187,35 +187,26 @@ StudyPilot enforces a zero-trust model with respect to AI outputs. The AI model'
 
 ## 8. Automated Testing
 
-StudyPilot includes 4 comprehensive automated test suites covering the AI planning pipeline, schema validation, analytics calculations, timer precision, and administrator security:
+StudyPilot includes automated tests covering study-metric calculations, administrator endpoint security, and the AI planning service:
 
 ```bash
-# Run all automated test suites
+# Run all automated tests (Vitest)
 npm test
 ```
 
-### Test Suites (37 tests across 13 suites):
-1. **`tests/aiPlanningAndValidation.test.ts`**:
-   * Time conversions (`timeToMinutes`, `minutesToTime`) and edge cases.
-   * Overlap detection (`checkTimesOverlap`).
-   * Zod AI response schema validation and malformed payload rejection.
-   * Deterministic constraints: daily hour limits, rest day exclusion, overlap repair, deadline-priority ordering.
-2. **`tests/metricsAndAnalytics.test.ts`**:
-   * 7-day weekly activity breakdown calculations.
-   * Subject aggregate study hours and progress percentages.
-   * Task urgency metrics (overdue, due today, due in 48h, high priority).
-   * Study streak consecutive day tracking across timezone boundaries.
-   * Earliest upcoming scheduled session retrieval.
-3. **`tests/adminAndSecurity.test.ts`**:
-   * Endpoint authorization verification and bootstrap secret validation.
-   * Privilege escalation prevention on public registration.
-   * Student privacy protection and email masking (`alex.chen@university.edu` -> `a***n@university.edu`).
-   * Firestore security rule invariants (cross-user data isolation).
-4. **`tests/timerAndSessionIntegrity.test.ts`**:
-   * Wall-clock timestamp tracking resilient to background tab throttling.
-   * Session state reconstruction and refresh recovery via `localStorage`.
-   * Duplicate session prevention (idempotency key guards).
-   * Accurate session-to-task duration linking.
+### Test Suites (18 tests across 3 suites):
+1. **`src/lib/studyMetrics.test.ts`** (11 tests):
+   * Date formatting and daily/weekly completed-hours calculations.
+   * Study-streak tracking (today/yesterday grace, gap handling).
+   * Next scheduled session retrieval.
+   * Task urgency classification (due today, overdue, due within 48h).
+   * Per-subject study-hour aggregation with progress percentages.
+2. **`server/adminBackendHandler.test.ts`** (6 tests):
+   * Admin authorization via bootstrap header and Bearer token.
+   * Rejection of wrong secrets and fail-closed behavior with no configured secret.
+   * Public demo token accepted only from loopback, refused from remote addresses.
+3. **`src/services/aiPlannerService.test.ts`** (1 test):
+   * AI planning service behavior in configuration setup mode.
 
 ---
 
