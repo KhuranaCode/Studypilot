@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Sidebar } from './Sidebar';
 import { X } from 'lucide-react';
 
@@ -8,6 +8,18 @@ interface MobileNavProps {
 }
 
 export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    closeButtonRef.current?.focus();
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   return (
@@ -20,9 +32,15 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
       />
 
       {/* Drawer */}
-      <div className="fixed inset-y-0 left-0 w-72 bg-white shadow-elevated z-10 flex flex-col animate-in slide-in-from-left duration-200">
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-label="Navigation menu"
+        className="fixed inset-y-0 left-0 w-72 bg-white shadow-elevated z-10 flex flex-col animate-in slide-in-from-left duration-200"
+      >
         <div className="absolute top-4 right-3">
           <button
+            ref={closeButtonRef}
             onClick={onClose}
             className="p-1.5 rounded-lg text-slate-400 hover:bg-slate-100 hover:text-slate-600"
             aria-label="Close menu"
