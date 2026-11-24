@@ -31,6 +31,11 @@ export const MobileTabBar: React.FC = () => {
           <NavLink
             key={tab.path}
             to={tab.path}
+            aria-label={
+              typeof tab.badge === 'number' && tab.badge > 0
+                ? `${tab.label}, ${tab.badge > 99 ? '99+' : tab.badge} pending`
+                : undefined
+            }
             className={({ isActive }) =>
               cn(
                 'relative flex flex-col items-center justify-center gap-0.5 py-2 text-[10px] font-semibold transition-colors',
