@@ -155,13 +155,24 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
         className="fixed inset-0"
         onClick={onClose}
       />
-      <div className="relative w-full max-w-xl bg-white rounded-2xl border border-pilot-soft/80 shadow-[0_6px_0_0_#ADBBDA,0_20px_40px_-8px_rgba(61,82,160,0.22)] overflow-hidden z-10 animate-in zoom-in-95 duration-150 text-left">
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-label="Command palette"
+        className="relative w-full max-w-xl bg-white rounded-2xl border border-pilot-soft/80 shadow-[0_6px_0_0_#ADBBDA,0_20px_40px_-8px_rgba(61,82,160,0.22)] overflow-hidden z-10 animate-in zoom-in-95 duration-150 text-left"
+      >
         {/* Search Input Bar */}
         <div className="flex items-center gap-3 px-4 py-3.5 border-b border-pilot-soft/50 bg-pilot-pale/40">
           <Search className="w-5 h-5 text-pilot-deep shrink-0" />
           <input
             ref={inputRef}
             type="text"
+            role="combobox"
+            aria-expanded="true"
+            aria-autocomplete="list"
+            aria-controls="command-palette-results"
+            aria-activedescendant={allFilteredItems.length > 0 ? `cmd-item-${selectedIndex}` : undefined}
+            aria-label="Search commands, tasks, and pages"
             value={query}
             onChange={(e) => {
               setQuery(e.target.value);
@@ -177,7 +188,12 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
         </div>
 
         {/* Results List */}
-        <div className="max-h-80 overflow-y-auto p-2 divide-y divide-pilot-soft/20">
+        <div
+          id="command-palette-results"
+          role="listbox"
+          aria-label="Matching commands and results"
+          className="max-h-80 overflow-y-auto p-2 divide-y divide-pilot-soft/20"
+        >
           {allFilteredItems.length === 0 ? (
             <div className="py-8 text-center text-xs text-slate-500">
               No matching commands or tasks found for "{query}".
@@ -189,6 +205,9 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
               return (
                 <button
                   key={item.id}
+                  id={`cmd-item-${idx}`}
+                  role="option"
+                  aria-selected={isSelected}
                   type="button"
                   onClick={() => {
                     item.action();
