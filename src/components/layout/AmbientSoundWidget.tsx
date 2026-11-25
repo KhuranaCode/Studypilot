@@ -49,6 +49,9 @@ export const AmbientSoundWidget: React.FC = () => {
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
+        aria-expanded={isOpen}
+        aria-haspopup="true"
+        aria-label="Ambient focus sounds"
         className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-150 border ${
           isPlaying
             ? 'bg-pilot-deep text-white border-pilot-deep shadow-3d-btn active:translate-y-px'
@@ -88,6 +91,7 @@ export const AmbientSoundWidget: React.FC = () => {
               <button
                 type="button"
                 onClick={handleTogglePlay}
+                aria-label={isPlaying ? 'Pause ambient sound' : 'Play ambient sound'}
                 className={`w-7 h-7 rounded-lg flex items-center justify-center transition-all ${
                   isPlaying
                     ? 'bg-pilot-deep text-white shadow-3d-btn'
@@ -107,6 +111,7 @@ export const AmbientSoundWidget: React.FC = () => {
                   <button
                     key={sound.id}
                     type="button"
+                    aria-pressed={isSelected}
                     onClick={() => handleSelectSound(sound.id)}
                     className={`flex items-center gap-2 p-2.5 rounded-xl text-xs font-medium border text-left transition-all ${
                       isSelected
@@ -134,6 +139,7 @@ export const AmbientSoundWidget: React.FC = () => {
                   min="0"
                   max="1"
                   step="0.05"
+                  aria-label="Ambient sound volume"
                   value={volume}
                   onChange={(e) => handleVolumeChange(parseFloat(e.target.value))}
                   className="w-full accent-pilot-deep h-1.5 bg-pilot-pale rounded-lg cursor-pointer"
