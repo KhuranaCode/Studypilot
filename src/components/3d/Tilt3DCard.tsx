@@ -24,10 +24,14 @@ export const Tilt3DCard: React.FC<Tilt3DCardProps> = ({
   const [tiltStyle, setTiltStyle] = useState<React.CSSProperties>({});
   const [glareStyle, setGlareStyle] = useState<React.CSSProperties>({ opacity: 0 });
   const [isHovered, setIsHovered] = useState(false);
+  const prefersReducedMotion = useRef(
+    typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  );
 
   const handleMouseMove = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
-      if (!cardRef.current) return;
+      if (!cardRef.current || prefersReducedMotion.current) return;
 
       const rect = cardRef.current.getBoundingClientRect();
       const x = e.clientX - rect.left;
@@ -64,6 +68,7 @@ export const Tilt3DCard: React.FC<Tilt3DCardProps> = ({
 
   const handleMouseLeave = () => {
     setIsHovered(false);
+    if (prefersReducedMotion.current) return;
     setTiltStyle({
       transform: `perspective(${perspective}px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`,
       transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
