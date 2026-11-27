@@ -85,6 +85,7 @@ export const ProgressPage: React.FC = () => {
         <div className="bg-slate-100 p-1 rounded-xl flex items-center text-xs font-semibold text-slate-600 self-start sm:self-auto shadow-3d-secondary">
           <button
             onClick={() => setPeriod('week')}
+            aria-pressed={period === 'week'}
             className={`px-3 py-1.5 rounded-lg transition-all ${
               period === 'week' ? 'bg-white text-pilot-deep shadow-2xs' : 'hover:text-slate-900'
             }`}
@@ -93,6 +94,7 @@ export const ProgressPage: React.FC = () => {
           </button>
           <button
             onClick={() => setPeriod('month')}
+            aria-pressed={period === 'month'}
             className={`px-3 py-1.5 rounded-lg transition-all ${
               period === 'month' ? 'bg-white text-pilot-deep shadow-2xs' : 'hover:text-slate-900'
             }`}
