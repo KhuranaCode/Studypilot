@@ -467,10 +467,11 @@ export const GeneratePlanModal: React.FC<GeneratePlanModalProps> = ({ isOpen, on
                 </div>
 
                 <div className="space-y-1 text-left">
-                  <label className="block text-xs font-semibold text-slate-700 tracking-wide uppercase">
+                  <label htmlFor="focus-notes" className="block text-xs font-semibold text-slate-700 tracking-wide uppercase">
                     Specific Focus Topics or Instructions (Optional)
                   </label>
                   <textarea
+                    id="focus-notes"
                     rows={2}
                     value={focusNotes}
                     onChange={(e) => setFocusNotes(e.target.value)}
