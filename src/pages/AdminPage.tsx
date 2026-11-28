@@ -425,13 +425,13 @@ export const AdminPage: React.FC = () => {
             <table className="w-full text-left text-xs">
               <thead className="bg-slate-50 border-b border-slate-200 text-slate-600 font-semibold uppercase tracking-wider">
                 <tr>
-                  <th className="py-3 px-4">Student / User</th>
-                  <th className="py-3 px-4">Masked Email</th>
-                  <th className="py-3 px-4">Role</th>
-                  <th className="py-3 px-4">Account Status</th>
-                  <th className="py-3 px-4">Study Volume</th>
-                  <th className="py-3 px-4">Joined</th>
-                  <th className="py-3 px-4 text-right">Actions</th>
+                  <th scope="col" className="py-3 px-4">Student / User</th>
+                  <th scope="col" className="py-3 px-4">Masked Email</th>
+                  <th scope="col" className="py-3 px-4">Role</th>
+                  <th scope="col" className="py-3 px-4">Account Status</th>
+                  <th scope="col" className="py-3 px-4">Study Volume</th>
+                  <th scope="col" className="py-3 px-4">Joined</th>
+                  <th scope="col" className="py-3 px-4 text-right">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 bg-white">
